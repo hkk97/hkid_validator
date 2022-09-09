@@ -32,6 +32,7 @@ dependencies:
   sembast: ">=3.1.1 <5.0.0"
   idb_shim: ">=2.0.1 <4.0.0"
   syncfusion_flutter_xlsio: ^20.2.48-beta
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
