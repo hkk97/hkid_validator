@@ -14,7 +14,7 @@ RUN flutter config --no-analytics
 RUN flutter doctor -v 
 
 # Copy files to container and get dependencies
-COPY . /usr/local/bin/app
+COPY . /usr/local/bin/app/
 WORKDIR /usr/local/bin/app/example
 RUN flutter pub get
 RUN flutter build web --web-renderer html --no-sound-null-safety --dart-define=ENV=PROD -dart-define=FLUTTER_WEB_USE_SKIA=true --release 
@@ -23,12 +23,10 @@ RUN flutter build web --web-renderer html --no-sound-null-safety --dart-define=E
 FROM nginx:stable-alpine
 WORKDIR /usr/share/nginx
 COPY --from=stage1 /usr/local/bin/app/example/build/web /var/www/wchklaus.xyz/hkidvalidator
-RUN mv -vi /var/www/wchklaus.xyz/hkidvalidator/assets/assets/* /var/www/wchklaus.xyz/hkidvalidator/assets \ 
-     && rm -rf /var/www/wchklaus.xyz/hkidvalidator/assets/assets \
-     && mv /var/www/wchklaus.xyz/hkidvalidator/flutter_service_worker.js /var/www/wchklaus.xyz/hkidvalidator/assets \
-     && mv /var/www/wchklaus.xyz/hkidvalidator/version.json /var/www/wchklaus.xyz/hkidvalidator/assets \
-     && mv /var/www/wchklaus.xyz/hkidvalidator/main.dart.js /var/www/wchklaus.xyz/hkidvalidator/assets \ 
-     && mv /var/www/wchklaus.xyz/hkidvalidator/main.dart.js.map /var/www/wchklaus.xyz/hkidvalidator/assets 
+# RUN mv -vi /var/www/wchklaus.xyz/hkidvalidator/flutter_service_worker.js /var/www/wchklaus.xyz/hkidvalidator/assets \
+#      && mv /var/www/wchklaus.xyz/hkidvalidator/version.json /var/www/wchklaus.xyz/hkidvalidator/assets \
+#      && mv /var/www/wchklaus.xyz/hkidvalidator/main.dart.js /var/www/wchklaus.xyz/hkidvalidator/assets \ 
+#      && mv /var/www/wchklaus.xyz/hkidvalidator/flutter.js /var/www/wchklaus.xyz/hkidvalidator/assets 
 COPY example/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY example/nginx/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
