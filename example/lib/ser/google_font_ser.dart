@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/src/painting/text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,5 +7,6 @@ class GoogleFontSer {
   factory GoogleFontSer() => _ser;
   GoogleFontSer._internal();
 
-  TextStyle arimo() => GoogleFonts.arimo(shadows: );
+  TextStyle arimo(TextStyle textStyle) =>
+      GoogleFonts.arimo(textStyle: textStyle);
 }

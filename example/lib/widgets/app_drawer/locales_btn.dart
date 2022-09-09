@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hkid_validator_web_demo/model/app_locale.dart';
 import 'package:hkid_validator_web_demo/ser/app_ser.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 
 class LocalesBtn extends StatelessWidget {
   const LocalesBtn({Key? key}) : super(key: key);
@@ -36,10 +37,13 @@ class LocalesBtn extends StatelessWidget {
                             },
                             child: Text(
                               appLocale.name,
-                              style: TextStyle(
-                                color:
-                                    isSelected ? Colors.white : Colors.black87,
-                                fontSize: isSelected ? 16 : 14,
+                              style: GoogleFontSer().arimo(
+                                TextStyle(
+                                  color: isSelected
+                                      ? Colors.white
+                                      : Colors.black87,
+                                  fontSize: isSelected ? 16 : 14,
+                                ),
                               ),
                             ),
                           ),

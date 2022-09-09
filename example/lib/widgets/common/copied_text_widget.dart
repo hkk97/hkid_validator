@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 
 class CopiedTextWidget extends StatefulWidget {
   final String text;
@@ -68,7 +69,7 @@ class _CopiedTextState extends State<CopiedTextWidget> {
                 ? Center(
                     child: Text(
                       'Copied'.tr,
-                      style: widget.style,
+                      style: GoogleFontSer().arimo(widget.style),
                     ),
                   )
                 : widget.child,
