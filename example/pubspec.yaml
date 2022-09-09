@@ -45,4 +45,3 @@ flutter:
   generate: true
   assets:
     - assets/
-  fonts:
