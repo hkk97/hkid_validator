@@ -1,4 +1,10 @@
 # HKID Validator - Flutter Web Demo
+[![DockerCI](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml)
+[![ForkCI](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml)
+[![GitHubPageCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml)
+[![GithubPacakgesCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml)
+[![pages-build-deployment](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment)
+
 The UI of HKID Validator Web App, was inspired by [icelam](https://github.com/icelam/hkid-generator).
 A Flutter Web Demo for HKID Validator, this web demo is used to demonstrate the powerful of Flutter in Web Development and the usage of the packages called [hkid_validator](../lib/hkid_validator.dart). 
 
