@@ -1,0 +1,27 @@
+name: DockerCI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+  deploy:
+    environment:
+      name: docker-hub
+      url: https://hub.docker.com/repository/docker/klaus97hk/hkid_validator
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publish to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          repository: klaus97hk/hkid_validator
+          tags: latest, ${{ github.run_number}}
+          
