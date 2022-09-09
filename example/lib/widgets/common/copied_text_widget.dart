@@ -72,7 +72,9 @@ class _CopiedTextState extends State<CopiedTextWidget> {
                       style: GoogleFontSer().arimo(widget.style),
                     ),
                   )
-                : widget.child,
+                : Center(
+                    child: widget.child,
+                  ),
           ),
         );
       },

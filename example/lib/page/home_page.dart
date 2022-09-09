@@ -132,6 +132,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                 left: 12,
                 top: 10,
                 child: IconButton(
+                  padding: const EdgeInsets.all(0),
                   onPressed: () => _scaffoldKey.currentState!.openDrawer(),
                   icon: const FaIcon(
                     FontAwesomeIcons.bars,

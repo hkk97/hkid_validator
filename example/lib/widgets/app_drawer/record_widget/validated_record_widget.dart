@@ -157,12 +157,15 @@ class ValidatedRecordWidget extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: Center(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
                                   child: Text(
                                     record.date(),
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 14.0,
+                                    style: GoogleFontSer().arimo(
+                                      const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 14.0,
+                                      ),
                                     ),
                                   ),
                                 ),
