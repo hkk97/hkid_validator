@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
@@ -132,8 +133,8 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                 top: 10,
                 child: IconButton(
                   onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-                  icon: const Icon(
-                    Icons.menu,
+                  icon: const FaIcon(
+                    FontAwesomeIcons.bars,
                     color: Colors.white,
                   ),
                 ),

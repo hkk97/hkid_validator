@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/model/record/generated_record.dart';
 import 'package:hkid_validator_web_demo/model/record/validated_record.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
 import 'package:sembast/sembast.dart';
@@ -64,9 +66,11 @@ class ValidatedRecordWidget extends StatelessWidget {
             return Center(
               child: Text(
                 "noneOfRecords".tr,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
+                style: GoogleFontSer().arimo(
+                  const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
                 ),
               ),
             );
@@ -98,9 +102,11 @@ class ValidatedRecordWidget extends StatelessWidget {
                                   children: [
                                     Text(
                                       snapshots[index]!.key.toString(),
-                                      style: const TextStyle(
-                                        color: Colors.white70,
-                                        fontSize: 14.0,
+                                      style: GoogleFontSer().arimo(
+                                        const TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 14.0,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(
@@ -108,15 +114,19 @@ class ValidatedRecordWidget extends StatelessWidget {
                                     ),
                                     CopiedTextWidget(
                                       text: record.id,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15.0,
+                                      style: GoogleFontSer().arimo(
+                                        const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15.0,
+                                        ),
                                       ),
                                       child: Text(
                                         record.id,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15.0,
+                                        style: GoogleFontSer().arimo(
+                                          const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15.0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -133,10 +143,10 @@ class ValidatedRecordWidget extends StatelessWidget {
                                         ),
                                       ),
                                       child: FittedBox(
-                                        child: Icon(
+                                        child: FaIcon(
                                           record.isValid
-                                              ? Icons.check
-                                              : Icons.close,
+                                              ? FontAwesomeIcons.circleCheck
+                                              : FontAwesomeIcons.circleXmark,
                                           color: record.isValid
                                               ? Colors.green
                                               : Colors.red,
@@ -180,8 +190,10 @@ class ValidatedRecordWidget extends StatelessWidget {
                           ),
                           child: Text(
                             'saveAsCSV'.tr,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w500,
+                            style: GoogleFontSer().arimo(
+                              const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),

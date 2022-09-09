@@ -4,6 +4,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/locales_btn.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/record_widget/generated_record_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/record_widget/validated_record_widget.dart';
@@ -54,9 +55,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                   child: Text(
                     'hkidValidator'.tr,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
+                    style: GoogleFontSer().arimo(
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
@@ -91,13 +94,17 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                               ),
                               unselectedLabelColor: Colors.black38,
                               labelColor: Colors.white,
-                              labelStyle: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.0,
+                              labelStyle: GoogleFontSer().arimo(
+                                const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.0,
+                                ),
                               ),
-                              unselectedLabelStyle: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.0,
+                              unselectedLabelStyle: GoogleFontSer().arimo(
+                                const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.0,
+                                ),
                               ),
                               tabs: _tabs.map(
                                 (tab) {

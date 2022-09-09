@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator/hkid_validator.dart';
 import 'package:hkid_validator_web_demo/formatter/upper_case_text_formatter.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 
 class ValidateHKIDWidget extends StatefulWidget {
@@ -49,9 +50,11 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
         children: [
           Text(
             'hkidCard'.tr,
-            style: const TextStyle(
-              fontSize: 30.0,
-              color: Colors.white,
+            style: GoogleFontSer().arimo(
+              const TextStyle(
+                fontSize: 30.0,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(
@@ -59,9 +62,11 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
           ),
           Text(
             'numValidator'.tr,
-            style: const TextStyle(
-              fontSize: 30.0,
-              color: Colors.white,
+            style: GoogleFontSer().arimo(
+              const TextStyle(
+                fontSize: 30.0,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(
@@ -98,7 +103,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                     }
                   }),
                   textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
                     isDense: false,
                     filled: true,
@@ -106,13 +111,15 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                     enabledBorder: InputBorder.none,
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 25.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 25.0),
                     hintText: 'e.g. A998877A',
-                    hintStyle: TextStyle(
-                      color: Colors.white54,
-                      fontSize: 30.0,
-                      letterSpacing: 3.0,
+                    hintStyle: GoogleFontSer().arimo(
+                      const TextStyle(
+                        color: Colors.white54,
+                        fontSize: 30.0,
+                        letterSpacing: 3.0,
+                      ),
                     ),
                   ),
                 ),
@@ -160,11 +167,13 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                         )
                       : Text(
                           'inCorrectMsg'.tr,
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1.5,
+                          style: GoogleFontSer().arimo(
+                            const TextStyle(
+                              color: Colors.red,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.5,
+                            ),
                           ),
                         ),
                 );

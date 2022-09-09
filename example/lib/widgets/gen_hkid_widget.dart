@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator/hkid_validator.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/common/custom_switch.dart';
@@ -57,9 +58,11 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
         children: [
           Text(
             'hkidCard'.tr,
-            style: const TextStyle(
-              fontSize: 30.0,
-              color: Colors.white,
+            style: GoogleFontSer().arimo(
+              const TextStyle(
+                fontSize: 30.0,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(
@@ -67,9 +70,11 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
           ),
           Text(
             'numGenerator'.tr,
-            style: const TextStyle(
-              fontSize: 30.0,
-              color: Colors.white,
+            style: GoogleFontSer().arimo(
+              const TextStyle(
+                fontSize: 30.0,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(
@@ -88,11 +93,13 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
                       text: withPARES ? hkid.withPARES() : hkid,
                       child: Text(
                         withPARES ? hkid.withPARES() : hkid,
-                        style: const TextStyle(
-                          fontSize: 44.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 10.0,
+                        style: GoogleFontSer().arimo(
+                          const TextStyle(
+                            fontSize: 44.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            letterSpacing: 10.0,
+                          ),
                         ),
                       ),
                     );
@@ -149,9 +156,11 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
                 children: [
                   Text(
                     'withPARES'.tr,
-                    style: TextStyle(
-                      color: withPARES ? Colors.white : Colors.black54,
-                      fontSize: 18.0,
+                    style: GoogleFontSer().arimo(
+                      TextStyle(
+                        color: withPARES ? Colors.white : Colors.black54,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -197,11 +206,13 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
                           vertical: 20.5, horizontal: 35.0),
                       child: Text(
                         'generate'.tr,
-                        style: TextStyle(
-                          color: isHover
-                              ? const Color.fromRGBO(85, 193, 133, 1.0)
-                              : Colors.white,
-                          fontSize: 20,
+                        style: GoogleFontSer().arimo(
+                          TextStyle(
+                            color: isHover
+                                ? const Color.fromRGBO(85, 193, 133, 1.0)
+                                : Colors.white,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 
 class SelectedRadioTextWidget extends StatelessWidget {
   final bool isSelected;
@@ -31,9 +32,11 @@ class SelectedRadioTextWidget extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyle(
-              color: isSelected == true ? Colors.white : Colors.black54,
-              fontSize: isSelected == true ? 18 : 16,
+            style: GoogleFontSer().arimo(
+              TextStyle(
+                color: isSelected == true ? Colors.white : Colors.black54,
+                fontSize: isSelected == true ? 18 : 16,
+              ),
             ),
           ),
         ],
