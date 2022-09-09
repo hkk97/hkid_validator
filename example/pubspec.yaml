@@ -43,3 +43,10 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/fonts/
+    - assets/fonts/MaterialIcons-Regular.ttf
+    - assets/FontManifest.json
+  fonts:
+    - family: MaterialIcons
+      fonts:
+        - asset: assets/fonts/MaterialIcons-Regular.ttf
