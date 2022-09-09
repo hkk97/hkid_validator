@@ -22,7 +22,13 @@ RUN flutter build web --web-renderer html --no-sound-null-safety --dart-define=E
 # Stage 2
 FROM nginx:stable-alpine
 WORKDIR /usr/share/nginx
-COPY --from=stage1 /usr/local/bin/app/example/build/web /var/www/hkidvalidator
+COPY --from=stage1 /usr/local/bin/app/example/build/web /var/www/wchklaus.xyz/hkidvalidator/hkidvalidator
+RUN mv -vi /var/www/wchklaus.xyz/hkidvalidator/hkidvalidator/assets/assets/* /var/www/wchklaus.xyz/hkidvalidator/hkidvalidator/assets \ 
+     && rm -rf /var/www/wchklaus.xyz/hkidvalidator/hkidvalidator/assets/assets \
+     && mv /var/www/wchklaus.xyz/hkidvalidator/flutter_service_worker.js /var/www/wchklaus.xyz/hkidvalidator/assets \
+     && mv /var/www/wchklaus.xyz/hkidvalidator/version.json /var/www/wchklaus.xyz/hkidvalidator/assets \
+     && mv /var/www/wchklaus.xyz/hkidvalidator/main.dart.js /var/www/wchklaus.xyz/hkidvalidator/assets \ 
+     && mv /var/www/wchklaus.xyz/hkidvalidator/main.dart.js.map /var/www/wchklaus.xyz/hkidvalidator/assets 
 COPY example/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY example/nginx/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
