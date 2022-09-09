@@ -88,10 +88,12 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                   inputFormatters: <TextInputFormatter>[
                     UpperCaseTextFormatter()
                   ],
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                    letterSpacing: 3.0,
+                  style: GoogleFontSer().arimo(
+                    const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                      letterSpacing: 3.0,
+                    ),
                   ),
                   cursorWidth: 4.5,
                   cursorRadius: const Radius.circular(3.5),

@@ -95,29 +95,29 @@ class GeneratedRecordWidget extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Text(
-                                        snapshots[index]!.key.toString(),
-                                        style: const TextStyle(
-                                          color: Colors.white70,
-                                          fontSize: 14.0,
-                                        ),
-                                      ),
+                                      Text(snapshots[index]!.key.toString(),
+                                          style: GoogleFontSer().arimo(
+                                            const TextStyle(
+                                              color: Colors.white70,
+                                              fontSize: 14.0,
+                                            ),
+                                          )),
                                       const SizedBox(
                                         width: 10.0,
                                       ),
                                       CopiedTextWidget(
                                         text: record.id,
-                                        style: GoogleFontSer().arimo(
-                                          const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                          ),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15.0,
                                         ),
                                         child: Text(
                                           record.id,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
+                                          style: GoogleFontSer().arimo(
+                                            const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -125,7 +125,8 @@ class GeneratedRecordWidget extends StatelessWidget {
                                   ),
                                 ),
                                 Expanded(
-                                  child: Center(
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
                                     child: Text(
                                       record.date(),
                                       style: GoogleFontSer().arimo(
@@ -159,12 +160,14 @@ class GeneratedRecordWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                             vertical: 11.5,
                           ),
-                          child: Text('saveAsCSV'.tr,
-                              style: GoogleFontSer().arimo(
-                                const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              )),
+                          child: Text(
+                            'saveAsCSV'.tr,
+                            style: GoogleFontSer().arimo(
+                              const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
