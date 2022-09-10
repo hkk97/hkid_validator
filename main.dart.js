@@ -72457,7 +72457,7 @@ A.a0V.prototype={
 giY(a){return"localhost"},
 gDb(){return!1}}
 A.aa2.prototype={
-giY(a){return"wchklaus.github.io/hkid_validator/assets/assets"},
+giY(a){return"wchklaus.github.io/hkid_validator/assets/assets/"},
 gDb(){return!0}}
 A.Zw.prototype={}
 A.a4r.prototype={}
