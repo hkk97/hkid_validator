@@ -109,13 +109,13 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                       ),
                     ],
                   ),
-                  ValidateHKIDWidget(
-                    bottomIndicatorBtn: BottomIndicatorBtn(
-                      sectionNotifi: _sectionNotifi,
-                      onTapGenerate: () => _goGenrateSection(),
-                      onTapValidate: () => _goValidateSection(),
-                    ),
-                  ),
+                  // ValidateHKIDWidget(
+                  //   bottomIndicatorBtn: BottomIndicatorBtn(
+                  //     sectionNotifi: _sectionNotifi,
+                  //     onTapGenerate: () => _goGenrateSection(),
+                  //     onTapValidate: () => _goValidateSection(),
+                  //   ),
+                  // ),
                 ],
               ),
               Positioned(
