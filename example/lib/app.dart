@@ -19,22 +19,20 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => GetMaterialApp(
-        title: appTitle,
-        theme: ThemeController().theme().value,
-        debugShowCheckedModeBanner: false,
-        locale: localeSer.locale(),
-        fallbackLocale: localeSer.fallbackLocale,
-        translations: localeSer,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        home: const HomePage(),
-      ),
+    return GetMaterialApp(
+      title: appTitle,
+      theme: ThemeController().theme().value,
+      debugShowCheckedModeBanner: false,
+      locale: localeSer.locale(),
+      fallbackLocale: localeSer.fallbackLocale,
+      translations: localeSer,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: const HomePage(),
     );
   }
 }

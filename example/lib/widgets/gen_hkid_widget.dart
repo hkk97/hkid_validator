@@ -49,7 +49,8 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
 
   @override
   Widget build(context) {
-    return SizedBox(
+    return Container(
+      color: const Color.fromRGBO(85, 193, 133, 1.0),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
