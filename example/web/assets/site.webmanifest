@@ -22,7 +22,7 @@
         {
             "src": "https://wchklaus.github.io/hkid_validator/assets/favicon.ico",
             "sizes": "48x48",
-            "type": "image/png"
+            "type": "image/ico"
         },
         {
             "src": "https://wchklaus.github.io/hkid_validator/assets/favicon-16x16.png",
@@ -44,7 +44,7 @@
                 {
                     "src": "https://wchklaus.github.io/hkid_validator/assets/favicon.ico",
                     "sizes": "48x48",
-                    "type": "image/png"
+                    "type": "image/ico"
                 },
                 {
                     "src": "https://wchklaus.github.io/hkid_validator/assets/favicon-16x16.png",
