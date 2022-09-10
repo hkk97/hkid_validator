@@ -6,7 +6,6 @@ import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
 import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
-import 'package:hkid_validator_web_demo/widgets/common/rounded_btn.dart';
 import 'package:hkid_validator_web_demo/widgets/gen_hkid_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/validate_hkid_widget.dart';
 
@@ -89,26 +88,35 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
           },
           child: Stack(
             children: [
-              Positioned.fill(
-                child: ListView(
-                  controller: _scrolContrl,
-                  children: [
-                    GeneratedHKIDWidget(
-                      bottomIndicatorBtn: BottomIndicatorBtn(
-                        sectionNotifi: _sectionNotifi,
-                        onTapGenerate: () => _goGenrateSection(),
-                        onTapValidate: () => _goValidateSection(),
-                      ),
+              ListView(
+                controller: _scrolContrl,
+                children: [
+                  const GeneratedHKIDWidget(),
+                  ValidateHKIDWidget(
+                    bottomIndicatorBtn: BottomIndicatorBtn(
+                      sectionNotifi: _sectionNotifi,
+                      onTapGenerate: () => _goGenrateSection(),
+                      onTapValidate: () => _goValidateSection(),
                     ),
-                    ValidateHKIDWidget(
-                      bottomIndicatorBtn: BottomIndicatorBtn(
-                        sectionNotifi: _sectionNotifi,
-                        onTapGenerate: () => _goGenrateSection(),
-                        onTapValidate: () => _goValidateSection(),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+              ValueListenableBuilder<Section>(
+                valueListenable: _sectionNotifi,
+                builder: (context, section, child) {
+                  return section == Section.generate
+                      ? Positioned(
+                          bottom: 30,
+                          left: 0,
+                          right: 0,
+                          child: BottomIndicatorBtn(
+                            sectionNotifi: _sectionNotifi,
+                            onTapGenerate: () => _goGenrateSection(),
+                            onTapValidate: () => _goValidateSection(),
+                          ),
+                        )
+                      : const SizedBox();
+                },
               ),
               Positioned(
                 left: 12,
