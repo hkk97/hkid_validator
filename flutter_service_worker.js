@@ -24,10 +24,11 @@ const RESOURCES = {
 "assets/FontManifest.json": "f66aa55cd79651f341aedd8491362eea",
 "assets/NOTICES": "d22e7f262de1119e19714862c028b88d",
 "assets/favicon.png": "e990c85d612f13b66faa12c37ac913d3",
+"assets/loading.gif": "6def8d80a999aa526b1eeb5799c215c7",
 "assets/manifest.json": "0fbf286ee180c096b0a05669cf323bcf",
 "flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
-"index.html": "09580aa71274d30e6af89ae1a146be92",
-"/": "09580aa71274d30e6af89ae1a146be92",
+"index.html": "b1026543f53573358c3d063c6a42e4ff",
+"/": "b1026543f53573358c3d063c6a42e4ff",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "version.json": "a74ce0bee35cc93dee71211e4d8908f1"
 };

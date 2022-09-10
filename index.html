@@ -23,10 +23,28 @@
   <link href="https://wchklaus.github.io/hkid_validator/assets/manifest.json" type="application/json"/>
 
   <script>
-    var serviceWorkerVersion = '3262273399';
+    var serviceWorkerVersion = '4007043758';
   </script>
+  <style>
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-<body>
+    .indicator{
+      width: 50vw;
+    }
+  </style>
+
+</head>
+<body style="overflow: hidden">
+  <div id="loader" class="container">
+    <img class="indicator" src="https://wchklaus.github.io/hkid_validator/assets/loading.gif">
+  </div>
+
   <script src="https://wchklaus.github.io/hkid_validator/main.dart.js" type="application/javascript"></script>
   <script src="https://wchklaus.github.io/hkid_validator/flutter_service_worker.js" type="application/javascript"></script></head>
   <script src="https://wchklaus.github.io/hkid_validator/flutter.js" type="application/javascript"></script>
@@ -44,6 +62,16 @@
         return appRunner.runApp();
       });
     });
+  </script>
+  <script>
+    window.onload = function(){
+      setTimeout(function(){
+        var loader = document.getElementById("loader");
+        if (loader){
+          loader.remove();
+        }
+      }, 10000);
+    };
   </script>
 </body>
 </html>
