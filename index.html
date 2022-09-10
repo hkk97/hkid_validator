@@ -20,16 +20,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://wchklaus.github.io/hkid_validator/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://wchklaus.github.io/hkid_validator/assets/favicon-16x16.png">
   <link rel="manifest" href="https://wchklaus.github.io/hkid_validator/assets/site.webmanifest">
-  <link rel="mask-icon" href="https://wchklaus.github.io/hkid_validator/assets/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="theme-color" content="#ffffff">
-
+  
 
   <title>Hong Kong Identify Card Validator and Generator</title>
   <link rel="icon" type="image/png" sizes="32x32" src="https://wchklaus.github.io/hkid_validator/assets/favicon.png"/>
   <link href="https://wchklaus.github.io/hkid_validator/assets/manifest.json" type="application/json"/>
 
   <script>
-    var serviceWorkerVersion = '1020014822';
+    var serviceWorkerVersion = '231894174';
   </script>
   <style>
     .container {
@@ -63,8 +61,8 @@
       }).then(function(engineInitializer) {
         return engineInitializer.initializeEngine();
       }).then(function(appRunner) {
-        var loader = document.getElementById("loader");
-        loader.remove();
+        var webLoader = document.getElementById("loader");
+        webLoader.remove();
         return appRunner.runApp();
       });
     });
