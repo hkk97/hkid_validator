@@ -151,7 +151,10 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
     if (section == 'validate') {
       _sectionNotifi.value = Section.validate;
       _goValidateSection();
-    }
+    } else if (section == 'generate') {
+      _sectionNotifi.value = Section.generate;
+      _goGenrateSection();
+    } else {}
     _animatedStatus.addListener(() {
       _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {

@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -24,16 +29,19 @@ class ValidateHKIDWidget extends StatefulWidget {
   State<ValidateHKIDWidget> createState() => _ValidateHKIDState();
 }
 
-class _ValidateHKIDState extends State<ValidateHKIDWidget> {
+class _ValidateHKIDState extends State<ValidateHKIDWidget>
+    with AfterLayoutMixin {
   late TextEditingController hkidController;
   late ValueNotifier<bool?> hkidValidateNotifi;
   final ScrollController _scrolContrl =
       ScrollController(initialScrollOffset: 0.0);
+  late ValueNotifier<Map?> deviceInfoNotifi;
 
   @override
   void initState() {
     hkidController = TextEditingController();
     hkidValidateNotifi = ValueNotifier(null);
+    deviceInfoNotifi = ValueNotifier(null);
     super.initState();
   }
 
@@ -42,6 +50,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
     hkidController.dispose();
     hkidValidateNotifi.dispose();
     _scrolContrl.dispose();
+    deviceInfoNotifi.dispose();
     super.dispose();
   }
 
@@ -221,6 +230,20 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                             },
                           ),
                         ),
+                        Expanded(
+                          child: ValueListenableBuilder<Map?>(
+                            valueListenable: deviceInfoNotifi,
+                            builder: (context, value, child) {
+                              if (value == null) {
+                                return const SizedBox();
+                              } else {
+                                return Text(
+                                  value.toString(),
+                                );
+                              }
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -237,5 +260,33 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
         ),
       ),
     );
+  }
+
+  Map<String, dynamic> _readWebBrowserInfo(WebBrowserInfo data) {
+    return <String, dynamic>{
+      'browserName': describeEnum(data.browserName),
+      'appCodeName': data.appCodeName,
+      'appName': data.appName,
+      'appVersion': data.appVersion,
+      'deviceMemory': data.deviceMemory,
+      'language': data.language,
+      'languages': data.languages,
+      'platform': data.platform,
+      'product': data.product,
+      'productSub': data.productSub,
+      'userAgent': data.userAgent,
+      'vendor': data.vendor,
+      'vendorSub': data.vendorSub,
+      'hardwareConcurrency': data.hardwareConcurrency,
+      'maxTouchPoints': data.maxTouchPoints,
+    };
+  }
+
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context) async {
+    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+    final deviceData =
+        _readWebBrowserInfo(await deviceInfoPlugin.webBrowserInfo);
+    deviceInfoNotifi.value = deviceData;
   }
 }
