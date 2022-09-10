@@ -9,10 +9,10 @@ import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 
 class ValidateHKIDWidget extends StatefulWidget {
   final Widget bottomIndicatorBtn;
-  ValueNotifier<AnimatedStatus> animatedStatus;
-  ValueNotifier<double> lastOffsetNotifi;
-  Function reverse;
-  ValidateHKIDWidget({
+  final ValueNotifier<AnimatedStatus> animatedStatus;
+  final ValueNotifier<double> lastOffsetNotifi;
+  final Function reverse;
+  const ValidateHKIDWidget({
     required this.animatedStatus,
     required this.lastOffsetNotifi,
     required this.bottomIndicatorBtn,
@@ -55,8 +55,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
 
   @override
   Widget build(context) {
-    return Container(
-      color: const Color.fromRGBO(85, 184, 193, 1.0),
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: NotificationListener<ScrollNotification>(

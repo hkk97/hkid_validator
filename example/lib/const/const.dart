@@ -13,3 +13,8 @@ enum CopyStatus {
   idle,
   copied,
 }
+
+enum ThemeType {
+  generated,
+  validated,
+}

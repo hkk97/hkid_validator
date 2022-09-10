@@ -67,7 +67,11 @@ class IndexedDBSer {
     _store = intMapStoreFactory.store("records");
     _genRCDNotifi.value = await readGeneratedID();
     _validatedRCDNotifi.value = await readValidatedID();
-    ;
+  }
+
+  Future<void> dispose() async {
+    _genRCDNotifi.dispose();
+    _validatedRCDNotifi.dispose();
   }
 
   Future<Database> _openDB(String name, version) async =>
