@@ -50,6 +50,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
     _sectionNotifi.value = Section.validate;
     LocalStorageSer().setSysConfig('section', 'validate');
     _scrolContrl.jumpTo(MediaQuery.of(context).size.height);
+    AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();
   }
 
@@ -57,6 +58,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
     _sectionNotifi.value = Section.generate;
     LocalStorageSer().setSysConfig('section', 'generate');
     _scrolContrl.jumpTo(0.0);
+    AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();
   }
 
@@ -155,10 +157,8 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
       _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {
         _goValidateSection();
-        AppSer().themeContrl().updateTheme(section: Section.validate);
       } else if (_isForward == false) {
         _goGenrateSection();
-        AppSer().themeContrl().updateTheme(section: Section.generate);
       } else {}
     });
   }
