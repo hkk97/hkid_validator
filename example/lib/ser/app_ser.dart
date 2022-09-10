@@ -29,7 +29,7 @@ class AppSer {
   }
 
   Future<void> dispose() async {
-    _themeContrl.dispose();
+    _themeContrl.onClose();
     _localeSer.dispose();
     _indexedDBSer.dispose();
   }
