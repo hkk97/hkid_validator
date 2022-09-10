@@ -89,34 +89,26 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
           },
           child: Stack(
             children: [
-              ListView(
-                controller: _scrolContrl,
-                children: [
-                  Stack(
-                    children: [
-                      const Positioned.fill(
-                        child: GeneratedHKIDWidget(),
+              Positioned.fill(
+                child: ListView(
+                  controller: _scrolContrl,
+                  children: [
+                    GeneratedHKIDWidget(
+                      bottomIndicatorBtn: BottomIndicatorBtn(
+                        sectionNotifi: _sectionNotifi,
+                        onTapGenerate: () => _goGenrateSection(),
+                        onTapValidate: () => _goValidateSection(),
                       ),
-                      Positioned(
-                        bottom: 30,
-                        left: 0,
-                        right: 0,
-                        child: BottomIndicatorBtn(
-                          sectionNotifi: _sectionNotifi,
-                          onTapGenerate: () => _goGenrateSection(),
-                          onTapValidate: () => _goValidateSection(),
-                        ),
+                    ),
+                    ValidateHKIDWidget(
+                      bottomIndicatorBtn: BottomIndicatorBtn(
+                        sectionNotifi: _sectionNotifi,
+                        onTapGenerate: () => _goGenrateSection(),
+                        onTapValidate: () => _goValidateSection(),
                       ),
-                    ],
-                  ),
-                  // ValidateHKIDWidget(
-                  //   bottomIndicatorBtn: BottomIndicatorBtn(
-                  //     sectionNotifi: _sectionNotifi,
-                  //     onTapGenerate: () => _goGenrateSection(),
-                  //     onTapValidate: () => _goValidateSection(),
-                  //   ),
-                  // ),
-                ],
+                    ),
+                  ],
+                ),
               ),
               Positioned(
                 left: 12,
