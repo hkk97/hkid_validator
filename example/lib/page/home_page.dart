@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
+import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
 import 'package:hkid_validator_web_demo/widgets/common/rounded_btn.dart';
 import 'package:hkid_validator_web_demo/widgets/gen_hkid_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/validate_hkid_widget.dart';
@@ -90,43 +91,32 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
             children: [
               ListView(
                 controller: _scrolContrl,
-                children: const [
-                  GeneratedHKIDWidget(),
-                  ValidateHKIDWidget(),
-                ],
-              ),
-              Positioned(
-                bottom: 30,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
                     children: [
-                      ValueListenableBuilder<Section>(
-                        valueListenable: _sectionNotifi,
-                        builder: (context, section, child) {
-                          return RoundedBtn(
-                            isSelected: section == Section.generate,
-                            onTap: () => _goGenrateSection(),
-                          );
-                        },
+                      const Positioned.fill(
+                        child: GeneratedHKIDWidget(),
                       ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      ValueListenableBuilder<Section>(
-                        valueListenable: _sectionNotifi,
-                        builder: (context, section, child) {
-                          return RoundedBtn(
-                            isSelected: section == Section.validate,
-                            onTap: () => _goValidateSection(),
-                          );
-                        },
+                      Positioned(
+                        bottom: 30,
+                        left: 0,
+                        right: 0,
+                        child: BottomIndicatorBtn(
+                          sectionNotifi: _sectionNotifi,
+                          onTapGenerate: () => _goGenrateSection(),
+                          onTapValidate: () => _goValidateSection(),
+                        ),
                       ),
                     ],
                   ),
-                ),
+                  ValidateHKIDWidget(
+                    bottomIndicatorBtn: BottomIndicatorBtn(
+                      sectionNotifi: _sectionNotifi,
+                      onTapGenerate: () => _goGenrateSection(),
+                      onTapValidate: () => _goValidateSection(),
+                    ),
+                  ),
+                ],
               ),
               Positioned(
                 left: 12,
