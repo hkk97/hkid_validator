@@ -7,4 +7,5 @@
     "theme_color": "#0175C2",
     "description": "HKID Validator used to generate validate Hong Kong Identity Card number. This is Single Page Application (SPA) whuch used Flutter to develop, through this website you would generate validated HKID and validate the HKID.",
     "orientation": "portrait-primary"
+
 }
