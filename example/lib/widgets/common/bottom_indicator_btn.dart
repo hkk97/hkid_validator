@@ -16,32 +16,35 @@ class BottomIndicatorBtn extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ValueListenableBuilder<Section>(
-            valueListenable: sectionNotifi,
-            builder: (context, section, child) {
-              return RoundedBtn(
-                isSelected: section == Section.generate,
-                onTap: () => onTapGenerate(),
-              );
-            },
-          ),
-          const SizedBox(
-            width: 8.0,
-          ),
-          ValueListenableBuilder<Section>(
-            valueListenable: sectionNotifi,
-            builder: (context, section, child) {
-              return RoundedBtn(
-                isSelected: section == Section.validate,
-                onTap: () => onTapValidate(),
-              );
-            },
-          ),
-        ],
+    return SizedBox(
+      height: 50,
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ValueListenableBuilder<Section>(
+              valueListenable: sectionNotifi,
+              builder: (context, section, child) {
+                return RoundedBtn(
+                  isSelected: section == Section.generate,
+                  onTap: () => onTapGenerate(),
+                );
+              },
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            ValueListenableBuilder<Section>(
+              valueListenable: sectionNotifi,
+              builder: (context, section, child) {
+                return RoundedBtn(
+                  isSelected: section == Section.validate,
+                  onTap: () => onTapValidate(),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

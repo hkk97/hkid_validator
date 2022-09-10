@@ -1,13 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:hkid_validator_web_demo/model/record/generated_record.dart';
-import 'package:hkid_validator_web_demo/model/record/validated_record.dart';
+import 'package:hkid_validator_web_demo/models/record/validated_record.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
+import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
 import 'package:sembast/sembast.dart';
 import 'package:syncfusion_flutter_xlsio/xlsio.dart' as xls;
 import 'dart:html';
@@ -139,18 +137,18 @@ class ValidatedRecordWidget extends StatelessWidget {
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.all(
-                                          Radius.circular(10),
+                                          Radius.circular(10.0),
                                         ),
                                       ),
-                                      child: FittedBox(
-                                        child: FaIcon(
-                                          record.isValid
-                                              ? FontAwesomeIcons.circleCheck
-                                              : FontAwesomeIcons.circleXmark,
-                                          color: record.isValid
-                                              ? Colors.green
-                                              : Colors.red,
-                                        ),
+                                      child: EnvImgWidget(
+                                        padding: EdgeInsets.all(
+                                            record.isValid ? 3.0 : 6.0),
+                                        boxFit: BoxFit.fitHeight,
+                                        src:
+                                            "icons/${record.isValid ? 'check' : 'close'}_16x16.png",
+                                        color: record.isValid
+                                            ? Colors.green
+                                            : Colors.red,
                                       ),
                                     )
                                   ],

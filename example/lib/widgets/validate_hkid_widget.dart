@@ -8,7 +8,7 @@ import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
 
 class ValidateHKIDWidget extends StatefulWidget {
-  final BottomIndicatorBtn bottomIndicatorBtn;
+  final Widget bottomIndicatorBtn;
   const ValidateHKIDWidget({required this.bottomIndicatorBtn, Key? key})
       : super(key: key);
 
@@ -44,158 +44,170 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
 
   @override
   Widget build(context) {
-    return ListView(
-      children: [
-        Container(
-          color: const Color.fromRGBO(85, 184, 193, 1.0),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    'hkidCard'.tr,
-                    style: GoogleFontSer().arimo(
-                      const TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-                  Text(
-                    'numValidator'.tr,
-                    style: GoogleFontSer().arimo(
-                      const TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width < 550
-                        ? MediaQuery.of(context).size.width - 50
-                        : MediaQuery.of(context).size.width / 3 < 550
-                            ? MediaQuery.of(context).size.width - 50
-                            : MediaQuery.of(context).size.width / 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        TextField(
-                          controller: hkidController,
-                          cursorColor: Colors.white,
-                          keyboardType: TextInputType.text,
-                          inputFormatters: <TextInputFormatter>[
-                            UpperCaseTextFormatter()
-                          ],
-                          style: GoogleFontSer().arimo(
-                            const TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              letterSpacing: 3.0,
-                            ),
-                          ),
-                          cursorWidth: 4.5,
-                          cursorRadius: const Radius.circular(3.5),
-                          maxLines: 1,
-                          onChanged: ((value) async {
-                            if (value.isNotEmpty &&
-                                (value.length == 8 || value.length == 9)) {
-                              await updateHKID(value);
-                            }
-                          }),
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            isDense: false,
-                            filled: true,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 25.0),
-                            hintText: 'e.g. A998877A',
-                            hintStyle: GoogleFontSer().arimo(
-                              const TextStyle(
-                                color: Colors.white54,
-                                fontSize: 30.0,
-                                letterSpacing: 3.0,
-                              ),
-                            ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: ListView(
+        children: [
+          Container(
+            color: const Color.fromRGBO(85, 184, 193, 1.0),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'hkidCard'.tr,
+                        style: GoogleFontSer().arimo(
+                          const TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.white,
                           ),
                         ),
-                        ValueListenableBuilder<bool?>(
+                      ),
+                      const SizedBox(
+                        height: 5.0,
+                      ),
+                      Text(
+                        'numValidator'.tr,
+                        style: GoogleFontSer().arimo(
+                          const TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width < 550
+                            ? MediaQuery.of(context).size.width - 50
+                            : MediaQuery.of(context).size.width / 3 < 550
+                                ? MediaQuery.of(context).size.width - 50
+                                : MediaQuery.of(context).size.width / 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            TextField(
+                              controller: hkidController,
+                              cursorColor: Colors.white,
+                              keyboardType: TextInputType.text,
+                              inputFormatters: <TextInputFormatter>[
+                                UpperCaseTextFormatter()
+                              ],
+                              style: GoogleFontSer().arimo(
+                                const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30.0,
+                                  letterSpacing: 3.0,
+                                ),
+                              ),
+                              cursorWidth: 4.5,
+                              cursorRadius: const Radius.circular(3.5),
+                              maxLines: 1,
+                              onChanged: ((value) async {
+                                if (value.isNotEmpty &&
+                                    (value.length == 8 || value.length == 9)) {
+                                  await updateHKID(value);
+                                }
+                              }),
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                isDense: false,
+                                filled: true,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 25.0),
+                                hintText: 'e.g. A998877A',
+                                hintStyle: GoogleFontSer().arimo(
+                                  const TextStyle(
+                                    color: Colors.white54,
+                                    fontSize: 30.0,
+                                    letterSpacing: 3.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            ValueListenableBuilder<bool?>(
+                              valueListenable: hkidValidateNotifi,
+                              builder: (context, isValid, child) {
+                                return ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5.0)),
+                                  child: Divider(
+                                    indent: 0,
+                                    endIndent: 0,
+                                    color: isValid == null || isValid == true
+                                        ? Colors.white
+                                        : Colors.red,
+                                    height: 5,
+                                    thickness: 5,
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 35.0,
+                        ),
+                        child: ValueListenableBuilder<bool?>(
                           valueListenable: hkidValidateNotifi,
                           builder: (context, isValid, child) {
-                            return ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5.0)),
-                              child: Divider(
-                                indent: 0,
-                                endIndent: 0,
-                                color: isValid == null || isValid == true
-                                    ? Colors.white
-                                    : Colors.red,
-                                height: 5,
-                                thickness: 5,
-                              ),
+                            if (isValid == null) {
+                              return const SizedBox();
+                            }
+                            return Center(
+                              child: isValid
+                                  ? Text(
+                                      'correctMsg'.tr,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.5,
+                                      ),
+                                    )
+                                  : Text(
+                                      'inCorrectMsg'.tr,
+                                      style: GoogleFontSer().arimo(
+                                        const TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1.5,
+                                        ),
+                                      ),
+                                    ),
                             );
                           },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 35.0,
-                    ),
-                    child: ValueListenableBuilder<bool?>(
-                      valueListenable: hkidValidateNotifi,
-                      builder: (context, isValid, child) {
-                        if (isValid == null) {
-                          return const SizedBox();
-                        }
-                        return Center(
-                          child: isValid
-                              ? Text(
-                                  'correctMsg'.tr,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 1.5,
-                                  ),
-                                )
-                              : Text(
-                                  'inCorrectMsg'.tr,
-                                  style: GoogleFontSer().arimo(
-                                    const TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1.5,
-                                    ),
-                                  ),
-                                ),
-                        );
-                      },
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 30.0,
                   ),
-                ],
-              ),
-              widget.bottomIndicatorBtn,
-            ],
+                  child: widget.bottomIndicatorBtn,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

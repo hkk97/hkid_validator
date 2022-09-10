@@ -5,7 +5,7 @@ import 'package:get/get_navigation/src/root/internacionalization.dart';
 import 'package:hkid_validator_web_demo/const/locale/ch_ch.dart';
 import 'package:hkid_validator_web_demo/const/locale/en_us.dart';
 import 'package:hkid_validator_web_demo/const/locale/hk_ch.dart';
-import 'package:hkid_validator_web_demo/model/app_locale.dart';
+import 'package:hkid_validator_web_demo/models/app_locale.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 
 class LocaleSer extends Translations {

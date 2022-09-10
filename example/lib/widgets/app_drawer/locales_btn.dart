@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hkid_validator_web_demo/model/app_locale.dart';
+import 'package:hkid_validator_web_demo/models/app_locale.dart';
 import 'package:hkid_validator_web_demo/ser/app_ser.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 

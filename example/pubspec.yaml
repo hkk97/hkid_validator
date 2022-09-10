@@ -46,3 +46,5 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/fonts/
+    - assets/icons/

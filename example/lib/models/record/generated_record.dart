@@ -1,4 +1,4 @@
-import 'package:hkid_validator_web_demo/model/record/hkid_record.dart';
+import 'package:hkid_validator_web_demo/models/record/hkid_record.dart';
 import 'package:intl/intl.dart';
 
 class GeneratedRecord extends HKID {

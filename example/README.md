@@ -55,7 +55,7 @@ Storage:
   - ValidatedID
 
 ## Localhost Running
-$ flutter run --web-renderer html --no-sound-null-safety -dart-define=FLUTTER_WEB_USE_SKIA=true -d chrome --release
+$ flutter run --web-renderer html --no-sound-null-safety --dart-define=ENV=DEV -dart-define=FLUTTER_WEB_USE_SKIA=true -d chrome
 
 
 # HKID Validator Demo

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hkid_validator_web_demo/model/record/generated_record.dart';
+import 'package:hkid_validator_web_demo/models/record/generated_record.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';

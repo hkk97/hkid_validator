@@ -6,7 +6,7 @@ const Map<String, String> chCH = {
   "withPARES": "包括括号",
   "generate": "生成",
   "numValidator": "号码验证器",
-  "correctMsg": "这不是正确的 HKID 格式.",
+  "correctMsg": "这是正确的香港身份证格式.",
   "inCorrectMsg": "这不是正确的香港身份证格式.",
   "copied": "已复制",
   "generator": "数字生成器",

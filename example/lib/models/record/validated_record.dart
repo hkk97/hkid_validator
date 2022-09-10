@@ -1,4 +1,4 @@
-import 'package:hkid_validator_web_demo/model/record/hkid_record.dart';
+import 'package:hkid_validator_web_demo/models/record/hkid_record.dart';
 import 'package:intl/intl.dart';
 
 class ValidatedRecord extends HKID {
@@ -10,7 +10,7 @@ class ValidatedRecord extends HKID {
     required super.id,
   });
 
-    String date() => DateFormat("MMM dd H:mm").format(validatedAt);
+  String date() => DateFormat("MMM dd H:mm").format(validatedAt);
 
   factory ValidatedRecord.fromJson(
     Map<String, dynamic> json,

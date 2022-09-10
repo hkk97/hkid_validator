@@ -6,6 +6,7 @@ import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
 import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
+import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/gen_hkid_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/validate_hkid_widget.dart';
 
@@ -119,13 +120,14 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                 },
               ),
               Positioned(
-                left: 12,
-                top: 10,
-                child: IconButton(
-                  padding: const EdgeInsets.all(0),
-                  onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-                  icon: const FaIcon(
-                    FontAwesomeIcons.bars,
+                left: 30,
+                top: 25,
+                child: InkWell(
+                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                  child: const EnvImgWidget(
+                    src: 'icons/menu_32x32.png',
+                    width: 25,
+                    height: 25,
                     color: Colors.white,
                   ),
                 ),
