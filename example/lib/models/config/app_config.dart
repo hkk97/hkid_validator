@@ -9,7 +9,7 @@ class DevConfig extends AppConfig {
 
 class ProdConfig extends AppConfig {
   @override
-  String get host => 'wchklaus.github.io/hkid_validator/assets/assets';
+  String get host => 'wchklaus.github.io/hkid_validator/assets/assets/';
   @override
   bool get enableHttps => true;
 }
