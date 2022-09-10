@@ -20,7 +20,8 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: appTitle,
       theme: ThemeData(
-        primarySwatch: null,
+        primaryColor: Colors.amber,
+        primarySwatch: Colors.amber,
       ),
       debugShowCheckedModeBanner: false,
       locale: localeSer.locale(),

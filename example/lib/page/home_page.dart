@@ -67,76 +67,79 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
 
   @override
   Widget build(context) {
-    return SafeArea(
-      child: Scaffold(
-        key: _scaffoldKey,
-        endDrawerEnableOpenDragGesture: false,
-        drawer: AppDrawer(
-          sectionNotifi: _sectionNotifi,
-        ),
-        body: NotificationListener<ScrollNotification>(
-          onNotification: (ScrollNotification notify) {
-            if (_animatedStatus.value == AnimatedStatus.idle) {
-              if (_lastOffsetNotifi.value != _scrolContrl.offset) {
-                if (_lastOffsetNotifi.value < _scrolContrl.offset) {
-                  _isForward = true;
-                } else if (_lastOffsetNotifi.value > _scrolContrl.offset) {
-                  _isForward = false;
-                } else {}
-                _animatedStatus.value = AnimatedStatus.animating;
+    return Material(
+      color: Colors.amber,
+      child: SafeArea(
+        child: Scaffold(
+          key: _scaffoldKey,
+          endDrawerEnableOpenDragGesture: false,
+          drawer: AppDrawer(
+            sectionNotifi: _sectionNotifi,
+          ),
+          body: NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification notify) {
+              if (_animatedStatus.value == AnimatedStatus.idle) {
+                if (_lastOffsetNotifi.value != _scrolContrl.offset) {
+                  if (_lastOffsetNotifi.value < _scrolContrl.offset) {
+                    _isForward = true;
+                  } else if (_lastOffsetNotifi.value > _scrolContrl.offset) {
+                    _isForward = false;
+                  } else {}
+                  _animatedStatus.value = AnimatedStatus.animating;
+                }
               }
-            }
-            return true;
-          },
-          child: Stack(
-            children: [
-              ListView(
-                controller: _scrolContrl,
-                children: [
-                  const GeneratedHKIDWidget(),
-                  ValidateHKIDWidget(
-                    lastOffsetNotifi: _lastOffsetNotifi,
-                    animatedStatus: _animatedStatus,
-                    bottomIndicatorBtn: BottomIndicatorBtn(
-                      sectionNotifi: _sectionNotifi,
-                      onTapGenerate: () => _goGenrateSection(),
-                      onTapValidate: () => _goValidateSection(),
+              return true;
+            },
+            child: Stack(
+              children: [
+                ListView(
+                  controller: _scrolContrl,
+                  children: [
+                    const GeneratedHKIDWidget(),
+                    ValidateHKIDWidget(
+                      lastOffsetNotifi: _lastOffsetNotifi,
+                      animatedStatus: _animatedStatus,
+                      bottomIndicatorBtn: BottomIndicatorBtn(
+                        sectionNotifi: _sectionNotifi,
+                        onTapGenerate: () => _goGenrateSection(),
+                        onTapValidate: () => _goValidateSection(),
+                      ),
+                      reverse: () => _isForward = false,
                     ),
-                    reverse: () => _isForward = false,
-                  ),
-                ],
-              ),
-              ValueListenableBuilder<Section>(
-                valueListenable: _sectionNotifi,
-                builder: (context, section, child) {
-                  return section == Section.generate
-                      ? Positioned(
-                          bottom: 30,
-                          left: 0,
-                          right: 0,
-                          child: BottomIndicatorBtn(
-                            sectionNotifi: _sectionNotifi,
-                            onTapGenerate: () => _goGenrateSection(),
-                            onTapValidate: () => _goValidateSection(),
-                          ),
-                        )
-                      : const SizedBox();
-                },
-              ),
-              Positioned(
-                left: 30,
-                top: 25,
-                child: InkWell(
-                  onTap: () => _scaffoldKey.currentState!.openDrawer(),
-                  child: const EnvImgWidget(
-                    src: 'icons/menu_32x32.png',
-                    width: 25,
-                    height: 25,
-                    color: Colors.white,
+                  ],
+                ),
+                ValueListenableBuilder<Section>(
+                  valueListenable: _sectionNotifi,
+                  builder: (context, section, child) {
+                    return section == Section.generate
+                        ? Positioned(
+                            bottom: 30,
+                            left: 0,
+                            right: 0,
+                            child: BottomIndicatorBtn(
+                              sectionNotifi: _sectionNotifi,
+                              onTapGenerate: () => _goGenrateSection(),
+                              onTapValidate: () => _goValidateSection(),
+                            ),
+                          )
+                        : const SizedBox();
+                  },
+                ),
+                Positioned(
+                  left: 30,
+                  top: 25,
+                  child: InkWell(
+                    onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                    child: const EnvImgWidget(
+                      src: 'icons/menu_32x32.png',
+                      width: 25,
+                      height: 25,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
