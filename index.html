@@ -23,7 +23,7 @@
   <link href="https://wchklaus.github.io/hkid_validator/assets/manifest.json" type="application/json"/>
 
   <script>
-    var serviceWorkerVersion = '3960598610';
+    var serviceWorkerVersion = '2003723024';
   </script>
   <style>
     .container {
@@ -32,6 +32,7 @@
       justify-content: center;
       align-items: center;
       display: flex;
+      height: 100vh;
     }
   </style>
 
@@ -40,12 +41,13 @@
   <div id="loader" class="container">
     <img src="https://wchklaus.github.io/hkid_validator/assets/loading.gif">
   </div>
-
+ 
   <script src="https://wchklaus.github.io/hkid_validator/main.dart.js" type="application/javascript"></script>
   <script src="https://wchklaus.github.io/hkid_validator/flutter_service_worker.js" type="application/javascript"></script></head>
   <script src="https://wchklaus.github.io/hkid_validator/flutter.js" type="application/javascript"></script>
+
+
   <script>
-    
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
@@ -55,19 +57,11 @@
       }).then(function(engineInitializer) {
         return engineInitializer.initializeEngine();
       }).then(function(appRunner) {
+        var loader = document.getElementById("loader");
+        loader.remove();
         return appRunner.runApp();
       });
     });
-  </script>
-  <script>
-    window.onload = function(){
-      setTimeout(function(){
-        var loader = document.getElementById("loader");
-        if (loader){
-          loader.remove();
-        }
-      }, 10000);
-    };
   </script>
 </body>
 </html>
