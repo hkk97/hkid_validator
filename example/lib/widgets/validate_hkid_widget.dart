@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator/hkid_validator.dart';
+import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/formatter/upper_case_text_formatter.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
-import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
 
 class ValidateHKIDWidget extends StatefulWidget {
   final Widget bottomIndicatorBtn;
-  const ValidateHKIDWidget({required this.bottomIndicatorBtn, Key? key})
-      : super(key: key);
+  ValueNotifier<AnimatedStatus> animatedStatus;
+  ValueNotifier<double> lastOffsetNotifi;
+  Function reverse;
+  ValidateHKIDWidget({
+    required this.animatedStatus,
+    required this.lastOffsetNotifi,
+    required this.bottomIndicatorBtn,
+    required this.reverse,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ValidateHKIDWidget> createState() => _ValidateHKIDState();
@@ -19,6 +27,8 @@ class ValidateHKIDWidget extends StatefulWidget {
 class _ValidateHKIDState extends State<ValidateHKIDWidget> {
   late TextEditingController hkidController;
   late ValueNotifier<bool?> hkidValidateNotifi;
+  final ScrollController _scrolContrl =
+      ScrollController(initialScrollOffset: 0.0);
 
   @override
   void initState() {
@@ -31,6 +41,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
   void dispose() {
     hkidController.dispose();
     hkidValidateNotifi.dispose();
+    _scrolContrl.dispose();
     super.dispose();
   }
 
@@ -44,16 +55,26 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
 
   @override
   Widget build(context) {
-    return SizedBox(
+    return Container(
+      color: const Color.fromRGBO(85, 184, 193, 1.0),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: ListView(
-        children: [
-          Container(
-            color: const Color.fromRGBO(85, 184, 193, 1.0),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
+      child: NotificationListener<ScrollNotification>(
+        onNotification: (ScrollNotification notify) {
+          if (widget.animatedStatus.value == AnimatedStatus.idle) {
+            if (widget.lastOffsetNotifi.value != _scrolContrl.offset) {
+              if (widget.lastOffsetNotifi.value > _scrolContrl.offset) {
+                widget.reverse();
+              }
+              widget.animatedStatus.value = AnimatedStatus.animating;
+            }
+          }
+          return true;
+        },
+        child: ListView(
+          controller: _scrolContrl,
+          children: [
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
@@ -205,8 +226,8 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

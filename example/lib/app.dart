@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/page/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,6 +17,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.amber,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
     return GetMaterialApp(
       title: appTitle,
       debugShowCheckedModeBanner: false,
@@ -28,9 +35,6 @@ class App extends StatelessWidget {
         DefaultCupertinoLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const HomePage(),
     );
   }

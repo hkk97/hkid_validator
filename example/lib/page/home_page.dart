@@ -23,14 +23,14 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
       ScrollController(initialScrollOffset: 0.0);
   late ValueNotifier<AnimatedStatus> _animatedStatus;
   late ValueNotifier<Section> _sectionNotifi;
-  late double _lastOffset;
+  late ValueNotifier<double> _lastOffsetNotifi;
   late bool? _isForward;
 
   @override
   void initState() {
     _animatedStatus = ValueNotifier(AnimatedStatus.idle);
     _sectionNotifi = ValueNotifier(Section.generate);
-    _lastOffset = 0.0;
+    _lastOffsetNotifi = ValueNotifier(0.0);
     _isForward = null;
     _scaffoldKey = GlobalKey<ScaffoldState>();
     super.initState();
@@ -38,6 +38,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
 
   @override
   void dispose() {
+    _lastOffsetNotifi.dispose();
     _animatedStatus.dispose();
     _scrolContrl.dispose();
     _sectionNotifi.dispose();
@@ -76,10 +77,10 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
         body: NotificationListener<ScrollNotification>(
           onNotification: (ScrollNotification notify) {
             if (_animatedStatus.value == AnimatedStatus.idle) {
-              if (_lastOffset != _scrolContrl.offset) {
-                if (_lastOffset < _scrolContrl.offset) {
+              if (_lastOffsetNotifi.value != _scrolContrl.offset) {
+                if (_lastOffsetNotifi.value < _scrolContrl.offset) {
                   _isForward = true;
-                } else if (_lastOffset > _scrolContrl.offset) {
+                } else if (_lastOffsetNotifi.value > _scrolContrl.offset) {
                   _isForward = false;
                 } else {}
                 _animatedStatus.value = AnimatedStatus.animating;
@@ -94,11 +95,14 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                 children: [
                   const GeneratedHKIDWidget(),
                   ValidateHKIDWidget(
+                    lastOffsetNotifi: _lastOffsetNotifi,
+                    animatedStatus: _animatedStatus,
                     bottomIndicatorBtn: BottomIndicatorBtn(
                       sectionNotifi: _sectionNotifi,
                       onTapGenerate: () => _goGenrateSection(),
                       onTapValidate: () => _goValidateSection(),
                     ),
+                    reverse: () => _isForward = false,
                   ),
                 ],
               ),
@@ -147,7 +151,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
       _goValidateSection();
     }
     _animatedStatus.addListener(() {
-      _lastOffset = _scrolContrl.offset;
+      _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {
         _goValidateSection();
       } else if (_isForward == false) {

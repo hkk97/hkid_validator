@@ -80,32 +80,36 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
           const SizedBox(
             height: 40,
           ),
-          ValueListenableBuilder<bool>(
-              valueListenable: parenthesesNotifi,
-              builder: (context, withPARES, child) {
-                return ValueListenableBuilder<String?>(
-                  valueListenable: validateHKIDNotifi,
-                  builder: (context, hkid, child) {
-                    if (hkid == null) {
-                      return const SizedBox();
-                    }
-                    return CopiedTextWidget(
-                      text: withPARES ? hkid.withPARES() : hkid,
-                      child: Text(
-                        withPARES ? hkid.withPARES() : hkid,
-                        style: GoogleFontSer().arimo(
-                          const TextStyle(
-                            fontSize: 44.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            letterSpacing: 10.0,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: ValueListenableBuilder<bool>(
+                valueListenable: parenthesesNotifi,
+                builder: (context, withPARES, child) {
+                  return ValueListenableBuilder<String?>(
+                    valueListenable: validateHKIDNotifi,
+                    builder: (context, hkid, child) {
+                      if (hkid == null) {
+                        return const SizedBox();
+                      }
+                      return CopiedTextWidget(
+                        text: withPARES ? hkid.withPARES() : hkid,
+                        child: Text(
+                          withPARES ? hkid.withPARES() : hkid,
+                          maxLines: 1,
+                          style: GoogleFontSer().arimo(
+                            TextStyle(
+                              fontSize: withPARES ? 40 : 44.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              letterSpacing: 10.0,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
-                );
-              }),
+                      );
+                    },
+                  );
+                }),
+          ),
           const SizedBox(
             height: 35,
           ),
