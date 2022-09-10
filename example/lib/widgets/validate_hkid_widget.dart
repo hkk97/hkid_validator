@@ -197,6 +197,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                                 child: isValid
                                     ? Text(
                                         'correctMsg'.tr,
+                                        textAlign: TextAlign.center,
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 22,
@@ -206,6 +207,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
                                       )
                                     : Text(
                                         'inCorrectMsg'.tr,
+                                        textAlign: TextAlign.center,
                                         style: GoogleFontSer().arimo(
                                           const TextStyle(
                                             color: Colors.red,

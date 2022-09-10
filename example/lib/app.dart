@@ -17,14 +17,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.amber,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
     return GetMaterialApp(
       title: appTitle,
+      theme: ThemeData(
+        backgroundColor: Colors.transparent,
+        scaffoldBackgroundColor: Colors.transparent,
+      ),
       debugShowCheckedModeBanner: false,
       locale: localeSer.locale(),
       fallbackLocale: localeSer.fallbackLocale,
