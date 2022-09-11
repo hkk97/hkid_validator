@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/app_ser.dart';
-import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
 import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
 import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
@@ -17,7 +16,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomeStatus();
 }
 
-class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
+class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
   late GlobalKey<ScaffoldState> _scaffoldKey;
   final ScrollController _scrolContrl =
       ScrollController(initialScrollOffset: 0.0);
@@ -45,18 +44,11 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
     super.dispose();
   }
 
-  void _goValidateSection() {
-    _sectionNotifi.value = Section.validate;
-    LocalStorageSer().setSysConfig('section', 'validate');
-    _scrolContrl.jumpTo(MediaQuery.of(context).size.height);
-    AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
-    _reset();
-  }
-
-  void _goGenrateSection() {
-    _sectionNotifi.value = Section.generate;
-    LocalStorageSer().setSysConfig('section', 'generate');
-    _scrolContrl.jumpTo(0.0);
+  void goSection(Section section) {
+    AppSer().indexedDBSer().sysDBSer().writeSys(
+        sec: section == Section.validate ? Section.validate : Section.generate);
+    _scrolContrl.jumpTo(
+        section == Section.validate ? MediaQuery.of(context).size.height : 0.0);
     AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();
   }
@@ -101,8 +93,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                     animatedStatus: _animatedStatus,
                     bottomIndicatorBtn: BottomIndicatorBtn(
                       sectionNotifi: _sectionNotifi,
-                      onTapGenerate: () => _goGenrateSection(),
-                      onTapValidate: () => _goValidateSection(),
+                      onTapGoSection: (section) => goSection(section),
                     ),
                     reverse: () => _isForward = false,
                   ),
@@ -118,8 +109,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
                           right: 0,
                           child: BottomIndicatorBtn(
                             sectionNotifi: _sectionNotifi,
-                            onTapGenerate: () => _goGenrateSection(),
-                            onTapValidate: () => _goValidateSection(),
+                            onTapGoSection: (section) => goSection(section),
                           ),
                         )
                       : const SizedBox();
@@ -146,21 +136,16 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin<HomePage> {
   }
 
   @override
-  FutureOr<void> afterFirstLayout(BuildContext context) {
-    String? section = LocalStorageSer().readSysConfig('section');
-    if (section == 'validate') {
-      _sectionNotifi.value = Section.validate;
-      _goValidateSection();
-    } else if (section == 'generate') {
-      _sectionNotifi.value = Section.generate;
-      _goGenrateSection();
-    } else {}
+  FutureOr<void> afterFirstLayout(context) async {
+    final sysNotifi = AppSer().indexedDBSer().sysDBSer().sysNotifi();
+    goSection(sysNotifi.value!.sec ?? Section.generate);
+
     _animatedStatus.addListener(() {
       _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {
-        _goValidateSection();
+        goSection(Section.validate);
       } else if (_isForward == false) {
-        _goGenrateSection();
+        goSection(Section.generate);
       } else {}
     });
   }

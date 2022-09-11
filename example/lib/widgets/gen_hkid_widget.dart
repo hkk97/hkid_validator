@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hkid_validator/hkid_validator.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
-import 'package:hkid_validator_web_demo/ser/indexeddb_ser.dart';
+import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/common/custom_switch.dart';
 import 'package:hkid_validator_web_demo/widgets/common/selected_radio_text_widget.dart';

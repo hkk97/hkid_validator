@@ -6,6 +6,7 @@ import 'package:hkid_validator_web_demo/const/locale/ch_ch.dart';
 import 'package:hkid_validator_web_demo/const/locale/en_us.dart';
 import 'package:hkid_validator_web_demo/const/locale/hk_ch.dart';
 import 'package:hkid_validator_web_demo/models/app_locale.dart';
+import 'package:hkid_validator_web_demo/ser/app_ser.dart';
 import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 
 class LocaleSer extends Translations {
@@ -50,11 +51,10 @@ class LocaleSer extends Translations {
         'hk_CH': hkCH,
       };
 
-  void init() {
-    String? refLocale = LocalStorageSer().readSysConfig('locale');
-    if (refLocale != null && nameToLocale.containsKey(refLocale)) {
-      _locale = nameToLocale[refLocale]!;
-      _appLocaleNotifi.value = AppLocale.appLocale(refLocale);
+  void init({required String? refLocaleName}) {
+    if (refLocaleName != null && nameToLocale.containsKey(refLocaleName)) {
+      _locale = nameToLocale[refLocaleName]!;
+      _appLocaleNotifi.value = AppLocale.appLocale(refLocaleName);
     }
   }
 
@@ -65,7 +65,7 @@ class LocaleSer extends Translations {
   void updateLocale(String name) {
     if (nameToLocale.containsKey(name)) {
       Locale newLocale = nameToLocale[name]!;
-      LocalStorageSer().setSysConfig('locale', name);
+      AppSer().indexedDBSer().sysDBSer().writeSys(localeName: name);
       _locale = newLocale;
       _appLocaleNotifi.value = AppLocale.appLocale(name);
       Get.updateLocale(newLocale);

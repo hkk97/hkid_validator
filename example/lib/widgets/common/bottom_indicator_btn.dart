@@ -4,13 +4,11 @@ import 'package:hkid_validator_web_demo/widgets/common/rounded_btn.dart';
 
 class BottomIndicatorBtn extends StatelessWidget {
   final ValueNotifier<Section> sectionNotifi;
-  final Function onTapGenerate;
-  final Function onTapValidate;
+  final Function(Section section) onTapGoSection;
 
   const BottomIndicatorBtn({
     required this.sectionNotifi,
-    required this.onTapGenerate,
-    required this.onTapValidate,
+    required this.onTapGoSection,
     super.key,
   });
 
@@ -27,7 +25,7 @@ class BottomIndicatorBtn extends StatelessWidget {
               builder: (context, section, child) {
                 return RoundedBtn(
                   isSelected: section == Section.generate,
-                  onTap: () => onTapGenerate(),
+                  onTap: () => onTapGoSection(Section.generate),
                 );
               },
             ),
@@ -39,7 +37,7 @@ class BottomIndicatorBtn extends StatelessWidget {
               builder: (context, section, child) {
                 return RoundedBtn(
                   isSelected: section == Section.validate,
-                  onTap: () => onTapValidate(),
+                  onTap: () => onTapGoSection(Section.validate),
                 );
               },
             ),
