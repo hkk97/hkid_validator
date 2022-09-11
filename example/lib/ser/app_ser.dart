@@ -26,7 +26,7 @@ class AppSer {
     _themeContrl = ThemeController();
     await _themeContrl.onInit(section: sys!.sec);
     _localeSer = LocaleSer();
-    _localeSer.init(refLocaleName: sys.localeName);
+    _localeSer.init(refLocaleName: sys.localeName!);
     _envSer = EnvSer()..initConfig(env);
   }
 

@@ -44,14 +44,19 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
     super.dispose();
   }
 
-  void goSection(Section section) {
-    AppSer().indexedDBSer().sysDBSer().writeSys(
+  Future goSection(
+    BuildContext context,
+    Section section,
+  ) async {
+    await AppSer().indexedDBSer().sysDBSer().writeSys(
         sec: section == Section.validate ? Section.validate : Section.generate);
-    _scrolContrl.jumpTo(
-        section == Section.validate ? MediaQuery.of(context).size.height : 0.0);
+    shiftSection(section);
     AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();
   }
+
+  void shiftSection(Section section) => _scrolContrl.jumpTo(
+      section == Section.validate ? MediaQuery.of(context).size.height : 0.0);
 
   void _reset() {
     _isForward = null;
@@ -93,7 +98,8 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
                     animatedStatus: _animatedStatus,
                     bottomIndicatorBtn: BottomIndicatorBtn(
                       sectionNotifi: _sectionNotifi,
-                      onTapGoSection: (section) => goSection(section),
+                      onTapGoSection: (section) async =>
+                          await goSection(context, section),
                     ),
                     reverse: () => _isForward = false,
                   ),
@@ -109,7 +115,8 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
                           right: 0,
                           child: BottomIndicatorBtn(
                             sectionNotifi: _sectionNotifi,
-                            onTapGoSection: (section) => goSection(section),
+                            onTapGoSection: (section) async =>
+                                await goSection(context, section),
                           ),
                         )
                       : const SizedBox();
@@ -138,14 +145,14 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
   @override
   FutureOr<void> afterFirstLayout(context) async {
     final sysNotifi = AppSer().indexedDBSer().sysDBSer().sysNotifi();
-    goSection(sysNotifi.value!.sec ?? Section.generate);
+    await goSection(context, sysNotifi.value!.sec ?? Section.generate);
 
-    _animatedStatus.addListener(() {
+    _animatedStatus.addListener(() async {
       _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {
-        goSection(Section.validate);
+        await goSection(context, Section.validate);
       } else if (_isForward == false) {
-        goSection(Section.generate);
+        await goSection(context, Section.generate);
       } else {}
     });
   }

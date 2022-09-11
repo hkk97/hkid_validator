@@ -9,7 +9,7 @@ class Sys {
   });
 
   factory Sys.fromJson(Map<String, dynamic> json) => Sys(
-        sec: json['sec'],
+        sec: json['sec'] == 'generate' ? Section.generate : Section.validate,
         localeName: json['localeName'],
       );
 

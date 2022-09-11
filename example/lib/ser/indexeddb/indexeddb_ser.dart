@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hkid_validator_web_demo/ser/indexeddb/sys_ser.dart';
+import 'package:hkid_validator_web_demo/ser/indexeddb/sysdb_ser.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast_web/sembast_web.dart';
 
@@ -79,7 +79,7 @@ class IndexedDBSer {
     _factory = databaseFactoryWeb;
     _store = intMapStoreFactory.store("records");
     _sysDBSer = SysDBSer(factory: _factory, store: _store);
-    _sysDBSer.init();
+    await _sysDBSer.init();
     // RecordSnapshot<int, Map<String, Object?>>? recordSnapshot = await readSys();
     // if (recordSnapshot == null) {
     //   final sys = Sys(sec: Section.generate, localeName: 'generate')
@@ -97,10 +97,4 @@ class IndexedDBSer {
     _sysDBSer.dispose();
     _validatedRCDNotifi.dispose();
   }
-
-  Future<Database> _openDB(String name, version) async =>
-      await _factory.openDatabase(
-        name,
-        version: version,
-      );
 }

@@ -61,8 +61,11 @@ class SysDBSer {
   }
 
   Future<Sys?> readSys() async {
-    final res = await readSnapshot();
-    return Sys.fromJson(res!.value);
+    RecordSnapshot<int, Map<String, Object?>>? res = await readSnapshot();
+    if (res == null) {
+      debugPrint("snapshot is null");
+    }
+    return res == null ? null : Sys.fromJson(res.value);
   }
 
   Future<RecordSnapshot<int, Map<String, Object?>>?> readSnapshot({
@@ -70,6 +73,6 @@ class SysDBSer {
   }) async {
     final db = refDB ?? await factory.openDatabase(_sysDBName, version: 1);
     int? key = await store.findKey(db);
-    return await store.record(key!).getSnapshot(db);
+    return key == null ? null : await store.record(key).getSnapshot(db);
   }
 }
