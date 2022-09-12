@@ -12,12 +12,14 @@ class ValidateHKIDWidget extends StatefulWidget {
   final Widget bottomIndicatorBtn;
   final ValueNotifier<AnimatedStatus> animatedStatus;
   final ValueNotifier<double> lastOffsetNotifi;
+  final Function(bool hasFocus) hasFocusCallBack;
   final Function reverse;
   const ValidateHKIDWidget({
     required this.animatedStatus,
     required this.lastOffsetNotifi,
     required this.bottomIndicatorBtn,
     required this.reverse,
+    required this.hasFocusCallBack,
     Key? key,
   }) : super(key: key);
 
@@ -28,13 +30,21 @@ class ValidateHKIDWidget extends StatefulWidget {
 class _ValidateHKIDState extends State<ValidateHKIDWidget> {
   late TextEditingController hkidController;
   late ValueNotifier<bool?> hkidValidateNotifi;
-  final ScrollController _scrolContrl =
+  late FocusNode validatedFocusNode;
+  late ValueNotifier<bool> validatedFocusNotifi;
+  final ScrollController scrolContrl =
       ScrollController(initialScrollOffset: 0.0);
 
   @override
   void initState() {
     hkidController = TextEditingController();
+    validatedFocusNode = FocusNode();
+    validatedFocusNotifi = ValueNotifier(false);
     hkidValidateNotifi = ValueNotifier(null);
+    validatedFocusNode.addListener(() => {
+          validatedFocusNotifi.value = validatedFocusNode.hasFocus,
+          widget.hasFocusCallBack(validatedFocusNode.hasFocus),
+        });
     super.initState();
   }
 
@@ -42,7 +52,10 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
   void dispose() {
     hkidController.dispose();
     hkidValidateNotifi.dispose();
-    _scrolContrl.dispose();
+    scrolContrl.dispose();
+    validatedFocusNotifi.dispose();
+    validatedFocusNode.removeListener(() {});
+    validatedFocusNode.dispose();
     super.dispose();
   }
 
@@ -63,8 +76,8 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notify) {
           if (widget.animatedStatus.value == AnimatedStatus.idle) {
-            if (widget.lastOffsetNotifi.value != _scrolContrl.offset) {
-              if (widget.lastOffsetNotifi.value > _scrolContrl.offset) {
+            if (widget.lastOffsetNotifi.value != scrolContrl.offset) {
+              if (widget.lastOffsetNotifi.value > scrolContrl.offset) {
                 widget.reverse();
               }
               widget.animatedStatus.value = AnimatedStatus.animating;
@@ -73,165 +86,171 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
           return true;
         },
         child: ListView(
-          controller: _scrolContrl,
+          controller: scrolContrl,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'hkidCard'.tr,
-                          style: GoogleFontSer().arimo(
-                            const TextStyle(
-                              fontSize: 30.0,
-                              color: Colors.white,
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () => validatedFocusNode.unfocus(),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'hkidCard'.tr,
+                            style: GoogleFontSer().arimo(
+                              const TextStyle(
+                                fontSize: 30.0,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          'numValidator'.tr,
-                          style: GoogleFontSer().arimo(
-                            const TextStyle(
-                              fontSize: 30.0,
-                              color: Colors.white,
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                          Text(
+                            'numValidator'.tr,
+                            style: GoogleFontSer().arimo(
+                              const TextStyle(
+                                fontSize: 30.0,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width < 550
-                              ? MediaQuery.of(context).size.width - 50
-                              : MediaQuery.of(context).size.width / 3 < 550
-                                  ? MediaQuery.of(context).size.width - 50
-                                  : MediaQuery.of(context).size.width / 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              TextField(
-                                controller: hkidController,
-                                cursorColor: Colors.white,
-                                keyboardType: TextInputType.text,
-                                inputFormatters: <TextInputFormatter>[
-                                  UpperCaseTextFormatter()
-                                ],
-                                style: GoogleFontSer().arimo(
-                                  const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30.0,
-                                    letterSpacing: 3.0,
-                                  ),
-                                ),
-                                cursorWidth: 4.5,
-                                cursorRadius: const Radius.circular(3.5),
-                                maxLines: 1,
-                                onChanged: ((value) async {
-                                  if (value.isNotEmpty &&
-                                      (value.length == 8 ||
-                                          value.length == 9)) {
-                                    await updateHKID(value);
-                                  }
-                                }),
-                                textAlign: TextAlign.center,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  isDense: false,
-                                  filled: true,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 25, vertical: 25.0),
-                                  hintText: 'e.g. A998877A',
-                                  hintStyle: GoogleFontSer().arimo(
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width < 550
+                                ? MediaQuery.of(context).size.width - 50
+                                : MediaQuery.of(context).size.width / 3 < 550
+                                    ? MediaQuery.of(context).size.width - 50
+                                    : MediaQuery.of(context).size.width / 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                TextField(
+                                  focusNode: validatedFocusNode,
+                                  controller: hkidController,
+                                  cursorColor: Colors.white,
+                                  keyboardType: TextInputType.text,
+                                  inputFormatters: <TextInputFormatter>[
+                                    UpperCaseTextFormatter()
+                                  ],
+                                  style: GoogleFontSer().arimo(
                                     const TextStyle(
-                                      color: Colors.white54,
+                                      color: Colors.white,
                                       fontSize: 30.0,
                                       letterSpacing: 3.0,
                                     ),
                                   ),
-                                ),
-                              ),
-                              ValueListenableBuilder<bool?>(
-                                valueListenable: hkidValidateNotifi,
-                                builder: (context, isValid, child) {
-                                  return ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0)),
-                                    child: Divider(
-                                      indent: 0,
-                                      endIndent: 0,
-                                      color: isValid == null || isValid == true
-                                          ? Colors.white
-                                          : Colors.red,
-                                      height: 5,
-                                      thickness: 5,
+                                  cursorWidth: 4.5,
+                                  cursorRadius: const Radius.circular(3.5),
+                                  maxLines: 1,
+                                  onChanged: ((value) async {
+                                    if (value.isNotEmpty &&
+                                        (value.length == 8 ||
+                                            value.length == 9)) {
+                                      await updateHKID(value);
+                                    }
+                                  }),
+                                  textAlign: TextAlign.center,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    isDense: false,
+                                    filled: true,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 25, vertical: 25.0),
+                                    hintText: 'e.g. A998877A',
+                                    hintStyle: GoogleFontSer().arimo(
+                                      const TextStyle(
+                                        color: Colors.white54,
+                                        fontSize: 30.0,
+                                        letterSpacing: 3.0,
+                                      ),
                                     ),
-                                  );
-                                },
-                              ),
-                            ],
+                                  ),
+                                ),
+                                ValueListenableBuilder<bool?>(
+                                  valueListenable: hkidValidateNotifi,
+                                  builder: (context, isValid, child) {
+                                    return ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(5.0)),
+                                      child: Divider(
+                                        indent: 0,
+                                        endIndent: 0,
+                                        color:
+                                            isValid == null || isValid == true
+                                                ? Colors.white
+                                                : Colors.red,
+                                        height: 5,
+                                        thickness: 5,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 35.0,
-                          ),
-                          child: ValueListenableBuilder<bool?>(
-                            valueListenable: hkidValidateNotifi,
-                            builder: (context, isValid, child) {
-                              if (isValid == null) {
-                                return const SizedBox();
-                              }
-                              return Center(
-                                child: isValid
-                                    ? Text(
-                                        'correctMsg'.tr,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 1.5,
-                                        ),
-                                      )
-                                    : Text(
-                                        'inCorrectMsg'.tr,
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFontSer().arimo(
-                                          const TextStyle(
-                                            color: Colors.red,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 35.0,
+                            ),
+                            child: ValueListenableBuilder<bool?>(
+                              valueListenable: hkidValidateNotifi,
+                              builder: (context, isValid, child) {
+                                if (isValid == null) {
+                                  return const SizedBox();
+                                }
+                                return Center(
+                                  child: isValid
+                                      ? Text(
+                                          'correctMsg'.tr,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            color: Colors.white,
                                             fontSize: 22,
                                             fontWeight: FontWeight.bold,
                                             letterSpacing: 1.5,
                                           ),
+                                        )
+                                      : Text(
+                                          'inCorrectMsg'.tr,
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFontSer().arimo(
+                                            const TextStyle(
+                                              color: Colors.red,
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 1.5,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 30.0,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 30.0,
+                      ),
+                      child: widget.bottomIndicatorBtn,
                     ),
-                    child: widget.bottomIndicatorBtn,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

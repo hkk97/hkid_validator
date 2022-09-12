@@ -24,6 +24,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
   late ValueNotifier<AnimatedStatus> _animatedStatus;
   late ValueNotifier<Section> _sectionNotifi;
   late ValueNotifier<double> _lastOffsetNotifi;
+  late ValueNotifier<bool> _showFlotBtnNotifi;
   late bool? _isForward;
 
   @override
@@ -31,6 +32,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
     _animatedStatus = ValueNotifier(AnimatedStatus.idle);
     _sectionNotifi = ValueNotifier(Section.generate);
     _lastOffsetNotifi = ValueNotifier(0.0);
+    _showFlotBtnNotifi = ValueNotifier(true);
     _isForward = null;
     _scaffoldKey = GlobalKey<ScaffoldState>();
     super.initState();
@@ -52,9 +54,19 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
     await AppSer().indexedDBSer().sysDBSer().write(
         sec: section == Section.validate ? Section.validate : Section.generate);
     _sectionNotifi.value = section;
+    if (section == Section.generate) {
+      hideKeyboard();
+    }
     shiftSection(section);
     AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();
+  }
+
+  void hideKeyboard() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.unfocus();
+    }
   }
 
   void shiftSection(Section section) => _scrolContrl.jumpTo(
@@ -104,6 +116,8 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
                           await goSection(context, section),
                     ),
                     reverse: () => _isForward = false,
+                    hasFocusCallBack: (isFocus) =>
+                        _showFlotBtnNotifi.value = !isFocus,
                   ),
                 ],
               ),
@@ -135,7 +149,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
                       message: 'menu'.tr,
                       child: const Icon(
                         Icons.menu_rounded,
-                        size: 30.0,
+                        size: 34.0,
                         color: Colors.white,
                       ),
                     ),
@@ -145,22 +159,28 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
             ],
           ),
         ),
-        floatingActionButton: ValueListenableBuilder<Section>(
-          valueListenable: _sectionNotifi,
-          builder: (context, section, child) {
-            return FloatingActionButton(
-              tooltip: "addToMainPage".tr,
-              backgroundColor: section == Section.generate
-                  ? const Color.fromRGBO(85, 184, 193, 1.0)
-                  : const Color.fromRGBO(85, 193, 133, 1.0),
-              child: const Icon(
-                Icons.add_home_outlined,
-                size: 30,
-              ),
-              onPressed: () async {
-                await showHomeOverlayWidget(context: context);
-              },
-            );
+        floatingActionButton: ValueListenableBuilder<bool>(
+          valueListenable: _showFlotBtnNotifi,
+          child: ValueListenableBuilder<Section>(
+            valueListenable: _sectionNotifi,
+            builder: (context, section, child) {
+              return FloatingActionButton(
+                tooltip: "addToMainPage".tr,
+                backgroundColor: section == Section.generate
+                    ? const Color.fromRGBO(85, 184, 193, 1.0)
+                    : const Color.fromRGBO(85, 193, 133, 1.0),
+                child: const Icon(
+                  Icons.add_home_outlined,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  await showHomeOverlayWidget(context: context);
+                },
+              );
+            },
+          ),
+          builder: (context, show, floatBtn) {
+            return show == false ? const SizedBox() : floatBtn!;
           },
         ),
       ),
