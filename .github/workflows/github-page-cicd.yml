@@ -1,4 +1,4 @@
-name: GitHubPageCI
+name: GitHubPageCICD
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       - name: Set Flutter version
         uses: subosito/flutter-action@v2.2.0
         with:
-          flutter-version: '${{ github.event.inputs.flutter_version }}'
+          flutter-version: "${{ github.event.inputs.flutter_version }}"
       - name: Install packages
         run: |
           flutter config --enable-web
