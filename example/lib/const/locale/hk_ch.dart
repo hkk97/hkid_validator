@@ -14,4 +14,5 @@ const Map<String, String> hkCH = {
   "hkidValidator": "香港身份證驗證器",
   "noneOfRecords": "沒有任何記錄",
   "saveAsCSV": "另存為 CSV 文件",
+  'addToMainPage': '添加 [香港身份證號碼驗證器] 到主頁',
 };

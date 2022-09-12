@@ -75,7 +75,7 @@ class ValidatedRecordWidget extends StatelessWidget {
                 top: 5.0,
                 bottom: 5.0,
                 left: 15.0,
-                right: 5.0,
+                right: 10.0,
               ),
               child: Column(
                 children: [
