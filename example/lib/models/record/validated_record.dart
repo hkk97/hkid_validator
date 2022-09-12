@@ -20,4 +20,10 @@ class ValidatedRecord extends HKID {
         id: json['id'],
         isValid: json['isValid'],
       );
+
+  Map<String, Object?> toJson() => {
+        'createdAt': validatedAt.toIso8601String(),
+        'id': id,
+        'isValid': isValid,
+      };
 }

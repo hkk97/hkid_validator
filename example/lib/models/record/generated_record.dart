@@ -17,4 +17,9 @@ class GeneratedRecord extends HKID {
         createdAt: DateTime.parse(json['createdAt']),
         id: json['id'],
       );
+
+  Map<String, Object?> toJson() => {
+        'createdAt': createdAt.toIso8601String(),
+        'id': id,
+      };
 }

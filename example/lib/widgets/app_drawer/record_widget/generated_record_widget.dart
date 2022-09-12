@@ -13,20 +13,18 @@ class GeneratedRecordWidget extends StatelessWidget {
   const GeneratedRecordWidget({Key? key}) : super(key: key);
 
   void _saveAsExcel() {
-    final snapshots = IndexedDBSer().genRCDNotifi().value;
-    if (snapshots != null) {
+    final res = IndexedDBSer().generatedDBSer().genIDNotifi().value;
+    if (res != null) {
       final xls.Workbook workbook = xls.Workbook();
       final xls.Worksheet sheet = workbook.worksheets[0];
       sheet.name = 'generatedHKID';
       sheet.getRangeByName('A1').setText('index');
       sheet.getRangeByName('B1').setText('hkid');
       sheet.getRangeByName('C1').setText('dateTime');
-      for (int i = 0; i < snapshots.length; i++) {
-        GeneratedRecord record = GeneratedRecord.fromJson(snapshots[i]!.value);
-        sheet
-            .getRangeByName('A${(i + 2).toString()}')
-            .setText(snapshots[i]!.key.toString());
-        sheet.getRangeByName('B${(i + 2).toString()}').setText(record.id);
+      for (int i = 0; i < res.length; i++) {
+        GeneratedRecord? record = res[i];
+        sheet.getRangeByName('A${(i + 2).toString()}').setText(i.toString());
+        sheet.getRangeByName('B${(i + 2).toString()}').setText(record!.id);
         sheet
             .getRangeByName('C${(i + 2).toString()}')
             .setDateTime(record.createdAt);
@@ -52,10 +50,10 @@ class GeneratedRecordWidget extends StatelessWidget {
           width: 0.85,
         ),
       ),
-      child: ValueListenableBuilder<List<RecordSnapshot?>?>(
-        valueListenable: IndexedDBSer().genRCDNotifi(),
-        builder: ((context, snapshots, child) {
-          if (snapshots == null || snapshots.isEmpty) {
+      child: ValueListenableBuilder<List<GeneratedRecord?>?>(
+        valueListenable: IndexedDBSer().generatedDBSer().genIDNotifi(),
+        builder: ((context, genRecord, child) {
+          if (genRecord == null || genRecord.isEmpty) {
             return Center(
               child: Text(
                 "noneOfRecords".tr,
@@ -84,10 +82,9 @@ class GeneratedRecordWidget extends StatelessWidget {
                         physics: const AlwaysScrollableScrollPhysics(
                           parent: BouncingScrollPhysics(),
                         ),
-                        itemCount: snapshots.length,
+                        itemCount: genRecord.length,
                         itemBuilder: (context, index) {
-                          GeneratedRecord record =
-                              GeneratedRecord.fromJson(snapshots[index]!.value);
+                          GeneratedRecord? record = genRecord[index];
                           return SizedBox(
                             height: 50,
                             child: Row(
@@ -95,7 +92,7 @@ class GeneratedRecordWidget extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Text(snapshots[index]!.key.toString(),
+                                      Text(index.toString(),
                                           style: GoogleFontSer().arimo(
                                             const TextStyle(
                                               color: Colors.white70,
@@ -106,7 +103,7 @@ class GeneratedRecordWidget extends StatelessWidget {
                                         width: 10.0,
                                       ),
                                       CopiedTextWidget(
-                                        text: record.id,
+                                        text: record!.id,
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15.0,

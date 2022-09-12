@@ -48,8 +48,9 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
     BuildContext context,
     Section section,
   ) async {
-    await AppSer().indexedDBSer().sysDBSer().writeSys(
+    await AppSer().indexedDBSer().sysDBSer().write(
         sec: section == Section.validate ? Section.validate : Section.generate);
+    _sectionNotifi.value = section;
     shiftSection(section);
     AppSer().themeContrl().updateTheme(section: _sectionNotifi.value);
     _reset();

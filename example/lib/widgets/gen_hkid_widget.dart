@@ -233,7 +233,7 @@ class _GeneratedHKIDState extends State<GeneratedHKIDWidget>
   Future<void> updateHKID() async {
     final hkid = HKIDValidator().genValidHKID(isEight: eightNumNotifi.value);
     validateHKIDNotifi.value = hkid;
-    await IndexedDBSer().writeGeneratedID(hkid: hkid);
+    await IndexedDBSer().generatedDBSer().write(hkid: hkid);
   }
 
   @override

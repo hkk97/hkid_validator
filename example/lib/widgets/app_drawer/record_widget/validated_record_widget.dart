@@ -6,7 +6,6 @@ import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
-import 'package:sembast/sembast.dart';
 import 'package:syncfusion_flutter_xlsio/xlsio.dart' as xls;
 import 'dart:html';
 
@@ -14,8 +13,8 @@ class ValidatedRecordWidget extends StatelessWidget {
   const ValidatedRecordWidget({Key? key}) : super(key: key);
 
   void _saveAsExcel() {
-    final snapshots = IndexedDBSer().validatedRCDNotifi().value;
-    if (snapshots != null) {
+    final res = IndexedDBSer().validatedDBSer().validatedIDNotifi().value;
+    if (res != null) {
       final xls.Workbook workbook = xls.Workbook();
       final xls.Worksheet sheet = workbook.worksheets[0];
       sheet.name = 'validatedHKID';
@@ -23,12 +22,10 @@ class ValidatedRecordWidget extends StatelessWidget {
       sheet.getRangeByName('B1').setText('hkid');
       sheet.getRangeByName('C1').setText('isValid');
       sheet.getRangeByName('D1').setText('dateTime');
-      for (int i = 0; i < snapshots.length; i++) {
-        ValidatedRecord record = ValidatedRecord.fromJson(snapshots[i]!.value);
-        sheet
-            .getRangeByName('A${(i + 2).toString()}')
-            .setText(snapshots[i]!.key.toString());
-        sheet.getRangeByName('B${(i + 2).toString()}').setText(record.id);
+      for (int i = 0; i < res.length; i++) {
+        ValidatedRecord? record = res[i];
+        sheet.getRangeByName('A${(i + 2).toString()}').setText(i.toString());
+        sheet.getRangeByName('B${(i + 2).toString()}').setText(record!.id);
         sheet
             .getRangeByName('C${(i + 2).toString()}')
             .setText(record.isValid ? 'valid' : 'invalid');
@@ -57,10 +54,10 @@ class ValidatedRecordWidget extends StatelessWidget {
           width: 0.85,
         ),
       ),
-      child: ValueListenableBuilder<List<RecordSnapshot?>?>(
-        valueListenable: IndexedDBSer().validatedRCDNotifi(),
-        builder: ((context, snapshots, child) {
-          if (snapshots == null || snapshots.isEmpty) {
+      child: ValueListenableBuilder<List<ValidatedRecord?>?>(
+        valueListenable: IndexedDBSer().validatedDBSer().validatedIDNotifi(),
+        builder: ((context, validatedRecord, child) {
+          if (validatedRecord == null || validatedRecord.isEmpty) {
             return Center(
               child: Text(
                 "noneOfRecords".tr,
@@ -87,10 +84,10 @@ class ValidatedRecordWidget extends StatelessWidget {
                       physics: const AlwaysScrollableScrollPhysics(
                         parent: BouncingScrollPhysics(),
                       ),
-                      itemCount: snapshots.length,
+                      itemCount: validatedRecord.length,
                       itemBuilder: (context, index) {
-                        ValidatedRecord record =
-                            ValidatedRecord.fromJson(snapshots[index]!.value);
+                        ValidatedRecord? record = validatedRecord[index];
+
                         return SizedBox(
                           height: 50,
                           child: Row(
@@ -99,7 +96,7 @@ class ValidatedRecordWidget extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      snapshots[index]!.key.toString(),
+                                      index.toString(),
                                       style: GoogleFontSer().arimo(
                                         const TextStyle(
                                           color: Colors.white70,
@@ -111,7 +108,7 @@ class ValidatedRecordWidget extends StatelessWidget {
                                       width: 10.0,
                                     ),
                                     CopiedTextWidget(
-                                      text: record.id,
+                                      text: record!.id,
                                       style: GoogleFontSer().arimo(
                                         const TextStyle(
                                           color: Colors.white,

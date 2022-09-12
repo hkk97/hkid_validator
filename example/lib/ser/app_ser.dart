@@ -1,7 +1,6 @@
 import 'package:hkid_validator_web_demo/controller/theme_controller.dart';
 import 'package:hkid_validator_web_demo/models/sys/sys.dart';
 import 'package:hkid_validator_web_demo/ser/env_ser.dart';
-import 'package:hkid_validator_web_demo/ser/local_storage_ser.dart';
 import 'package:hkid_validator_web_demo/ser/locale_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 
@@ -22,7 +21,7 @@ class AppSer {
   Future<void> init({required String env}) async {
     _indexedDBSer = IndexedDBSer();
     await _indexedDBSer.init();
-    Sys? sys = await _indexedDBSer.sysDBSer().readSys();
+    Sys? sys = await _indexedDBSer.sysDBSer().read();
     _themeContrl = ThemeController();
     await _themeContrl.onInit(section: sys!.sec);
     _localeSer = LocaleSer();

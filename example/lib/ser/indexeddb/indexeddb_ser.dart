@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hkid_validator_web_demo/ser/indexeddb/generateddb_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/sysdb_ser.dart';
+import 'package:hkid_validator_web_demo/ser/indexeddb/validateddb_ser.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast_web/sembast_web.dart';
 
@@ -8,93 +10,33 @@ class IndexedDBSer {
   factory IndexedDBSer() => _ser;
   IndexedDBSer._internal();
 
-  static const _generatedDBName = 'GeneratedID';
-  static const _validatedDBName = 'ValidatedID';
-  static const _sysDBName = 'SysDB';
-
   late DatabaseFactory _factory;
   late SysDBSer _sysDBSer;
+  late GeneratedDBSer _generatedDBSer;
+  late ValidatedDBSer _validatedDBSer;
 
   SysDBSer sysDBSer() => _sysDBSer;
-  late StoreRef<int, Map<String, Object?>> _store;
+  GeneratedDBSer generatedDBSer() => _generatedDBSer;
+  ValidatedDBSer validatedDBSer() => _validatedDBSer;
 
-  final ValueNotifier<List<RecordSnapshot?>?> _genRCDNotifi =
-      ValueNotifier(null);
-  final ValueNotifier<List<RecordSnapshot?>?> _validatedRCDNotifi =
-      ValueNotifier(null);
-
-  ValueNotifier<List<RecordSnapshot?>?> genRCDNotifi() => _genRCDNotifi;
-  ValueNotifier<List<RecordSnapshot?>?> validatedRCDNotifi() =>
-      _validatedRCDNotifi;
-
-  Future<RecordSnapshot<int, Map<String, Object?>>?> readSys({
-    Database? refDB,
-  }) async {
-    final db = refDB ?? await _factory.openDatabase(_sysDBName, version: 1);
-    int? key = await _store.findKey(db);
-    return await _store.record(key!).getSnapshot(db);
-  }
-
-  Future<void> writeGeneratedID({required String hkid}) async {
-    final db = await _factory.openDatabase(_generatedDBName, version: 1);
-    var data = await _store.add(
-      db,
-      {
-        'createdAt': DateTime.now().toIso8601String(),
-        'id': hkid,
-      },
-    );
-    db.close();
-    _genRCDNotifi.value!.add(await _store.record(data).getSnapshot(db));
-  }
-
-  Future<void> writeValidatedID(
-      {required String hkid, required bool isValid}) async {
-    final db = await _factory.openDatabase(_validatedDBName, version: 1);
-    var data = await _store.add(
-      db,
-      {
-        'validatedAt': DateTime.now().toIso8601String(),
-        'id': hkid,
-        'isValid': isValid,
-      },
-    );
-    db.close();
-    _validatedRCDNotifi.value!.add(await _store.record(data).getSnapshot(db));
-  }
-
-  Future<List<RecordSnapshot?>?> readGeneratedID() async {
-    final db = await _factory.openDatabase(_generatedDBName, version: 1);
-    List<int> keys = await _store.findKeys(db);
-    return await _store.records(keys).getSnapshots(db);
-  }
-
-  Future<List<RecordSnapshot?>?> readValidatedID() async {
-    final db = await _factory.openDatabase(_validatedDBName, version: 1);
-    List<int> keys = await _store.findKeys(db);
-    return await _store.records(keys).getSnapshots(db);
-  }
+  late StoreRef<int, Map<String, Object?>> _dbStore;
 
   Future<void> init() async {
     _factory = databaseFactoryWeb;
-    _store = intMapStoreFactory.store("records");
-    _sysDBSer = SysDBSer(factory: _factory, store: _store);
+    _dbStore = intMapStoreFactory.store("records");
+    _sysDBSer = SysDBSer(name: 'SysDB', dbFactory: _factory, dbstore: _dbStore);
     await _sysDBSer.init();
-    // RecordSnapshot<int, Map<String, Object?>>? recordSnapshot = await readSys();
-    // if (recordSnapshot == null) {
-    //   final sys = Sys(sec: Section.generate, localeName: 'generate')
-    //   _sysNotifi.value = sys;
-    //   await writeSys(sys: sys);
-    // } else {
-    //   _sysNotifi.value = Sys.fromJson(recordSnapshot.value);
-    // }
-    _genRCDNotifi.value = await readGeneratedID();
-    _validatedRCDNotifi.value = await readValidatedID();
+    _generatedDBSer = GeneratedDBSer(
+        name: 'GeneratedDB', dbFactory: _factory, dbstore: _dbStore);
+    await _generatedDBSer.init();
+    _validatedDBSer = ValidatedDBSer(
+        name: 'ValidatedDB', dbFactory: _factory, dbstore: _dbStore);
+    await _generatedDBSer.init();
   }
 
   Future<void> dispose() async {
-    _genRCDNotifi.dispose();
     _sysDBSer.dispose();
-    _validatedRCDNotifi.dispose();
+    _generatedDBSer.dispose();
+    _validatedDBSer.dispose();
   }
 }

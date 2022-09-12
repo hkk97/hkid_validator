@@ -51,7 +51,7 @@ class _ValidateHKIDState extends State<ValidateHKIDWidget> {
         value.substring(0, value.length - 1),
         value.substring(value.length - 1));
     hkidValidateNotifi.value = isValid;
-    await IndexedDBSer().writeValidatedID(hkid: value, isValid: isValid);
+    await IndexedDBSer().validatedDBSer().write(hkid: value, isValid: isValid);
   }
 
   @override
