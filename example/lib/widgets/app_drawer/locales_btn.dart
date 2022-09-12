@@ -30,8 +30,8 @@ class LocalesBtn extends StatelessWidget {
                                 isSelected ? Colors.black87 : Colors.white,
                               ),
                             ),
-                            onPressed: () {
-                              AppSer()
+                            onPressed: () async {
+                              await AppSer()
                                   .localeSer()
                                   .updateLocale(appLocale.localeName);
                             },

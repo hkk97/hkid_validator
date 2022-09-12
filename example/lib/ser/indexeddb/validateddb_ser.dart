@@ -3,17 +3,15 @@ import 'package:hkid_validator_web_demo/models/record/validated_record.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/db_ser.dart';
 import 'package:sembast/sembast.dart';
 
-class ValidatedDBSer extends DBSer {
+class ValidatedDBSer extends DBSerClient {
   late ValueNotifier<List<ValidatedRecord?>?> _validatedIDNotifi;
-  ValueNotifier<List<ValidatedRecord?>?> validatedIDNotifi() =>
-      _validatedIDNotifi;
-  ValidatedDBSer({
-    required super.name,
-    required super.dbstore,
-    required super.dbFactory,
-  }) {
+
+  ValidatedDBSer({super.dbSer}) {
     _validatedIDNotifi = ValueNotifier(null);
   }
+
+  ValueNotifier<List<ValidatedRecord?>?> validatedIDNotifi() =>
+      _validatedIDNotifi;
 
   Future<void> init() async {
     List<ValidatedRecord?>? res = await read();
@@ -23,26 +21,24 @@ class ValidatedDBSer extends DBSer {
   }
 
   Future<void> dispose() async {
+    await dbSer!.dispose();
     _validatedIDNotifi.dispose();
   }
 
   Future<void> write({required String hkid, required bool isValid}) async {
     final validatedRecord = ValidatedRecord(
         validatedAt: DateTime.now(), id: hkid, isValid: isValid);
-    final db = await dbFactory.openDatabase(name, version: 1);
-    await dbstore.add(
-      db,
+    await dbSer!.dbstore.add(
+      dbSer!.db,
       validatedRecord.toJson(),
     );
-    db.close();
     _validatedIDNotifi.value!.add(validatedRecord);
   }
 
   Future<List<ValidatedRecord?>?> read() async {
-    final db = await dbFactory.openDatabase(name, version: 1);
-    List<int> keys = await dbstore.findKeys(db);
+    List<int> keys = await dbSer!.dbstore.findKeys(dbSer!.db);
     List<RecordSnapshot<int, Map<String, Object?>>?> resSnapshot =
-        await dbstore.records(keys).getSnapshots(db);
+        await dbSer!.dbstore.records(keys).getSnapshots(dbSer!.db);
     return resSnapshot.isEmpty
         ? null
         : resSnapshot

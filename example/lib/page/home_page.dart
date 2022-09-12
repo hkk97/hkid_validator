@@ -44,7 +44,7 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
     super.dispose();
   }
 
-  Future goSection(
+  Future<void> goSection(
     BuildContext context,
     Section section,
   ) async {

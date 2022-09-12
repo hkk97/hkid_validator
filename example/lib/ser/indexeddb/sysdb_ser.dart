@@ -4,18 +4,16 @@ import 'package:hkid_validator_web_demo/models/sys/sys.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/db_ser.dart';
 import 'package:sembast/sembast.dart';
 
-class SysDBSer extends DBSer {
+class SysDBSer extends DBSerClient {
   late ValueNotifier<Sys?> _sysNotifi;
-  SysDBSer({
-    required super.name,
-    required super.dbstore,
-    required super.dbFactory,
-  }) {
+
+  SysDBSer({super.dbSer}) {
     _sysNotifi = ValueNotifier(null);
   }
 
   ValueNotifier<Sys?> sysNotifi() => _sysNotifi;
 
+  @override
   Future<void> init() async {
     Sys? sys = await read();
     sys == null
@@ -23,7 +21,8 @@ class SysDBSer extends DBSer {
         : _sysNotifi.value = sys;
   }
 
-  void dispose() {
+  Future<void> dispose() async {
+    await dbSer!.dispose();
     _sysNotifi.dispose();
   }
 
@@ -31,24 +30,20 @@ class SysDBSer extends DBSer {
     Section? sec,
     String? localeName,
   }) async {
-    final db = await dbFactory.openDatabase(name, version: 1);
     if (_sysNotifi.value == null && (sec != null || localeName != null)) {
-      var data = await dbstore.add(
-          db, Sys(sec: sec!, localeName: localeName!).toJson());
-      db.close();
+      var data = await dbSer!.dbstore
+          .add(dbSer!.db, Sys(sec: sec!, localeName: localeName!).toJson());
       RecordSnapshot<int, Map<String, Object?>>? recordSnapshot =
-          await dbstore.record(data).getSnapshot(db);
+          await dbSer!.dbstore.record(data).getSnapshot(dbSer!.db);
       _sysNotifi.value = Sys.fromJson(recordSnapshot!.value);
     } else if (_sysNotifi.value != null) {
       Sys sys = _sysNotifi.value!.copyWith(sec: sec, localeName: localeName);
       if (!_sysNotifi.value!.isMatch(sys)) {
-        int? key = await dbstore.findKey(db);
         RecordSnapshot<int, Map<String, Object?>>? recordSnapshot =
             await _readSnapshot();
         if (recordSnapshot != null) {
-          int updatedCount = await dbstore.update(
-              db, Sys.fromJson(recordSnapshot.value).mergeWith(sys).toJson());
-          db.close();
+          int updatedCount = await dbSer!.dbstore.update(dbSer!.db,
+              Sys.fromJson(recordSnapshot.value).mergeWith(sys).toJson());
           if (updatedCount != 0) {
             _sysNotifi.value = sys;
           }
@@ -64,10 +59,10 @@ class SysDBSer extends DBSer {
 
   Future<RecordSnapshot<int, Map<String, Object?>>?> _readSnapshot() async {
     late var res;
-    final db = await dbFactory.openDatabase(name, version: 1);
-    int? key = await dbstore.findKey(db);
-    res = key == null ? null : await dbstore.record(key).getSnapshot(db);
-    db.close();
+    int? key = await dbSer!.dbstore.findKey(dbSer!.db);
+    res = key == null
+        ? null
+        : await dbSer!.dbstore.record(key).getSnapshot(dbSer!.db);
     return res;
   }
 }

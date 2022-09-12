@@ -61,10 +61,10 @@ class LocaleSer extends Translations {
     _appLocaleNotifi.dispose();
   }
 
-  void updateLocale(String name) {
+  Future<void> updateLocale(String name) async {
     if (nameToLocale.containsKey(name)) {
       Locale newLocale = nameToLocale[name]!;
-      AppSer().indexedDBSer().sysDBSer().write(localeName: name);
+      await AppSer().indexedDBSer().sysDBSer().write(localeName: name);
       _locale = newLocale;
       _appLocaleNotifi.value = AppLocale.appLocale(name);
       Get.updateLocale(newLocale);
