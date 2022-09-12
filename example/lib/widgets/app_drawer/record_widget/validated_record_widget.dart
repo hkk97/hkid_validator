@@ -87,7 +87,6 @@ class ValidatedRecordWidget extends StatelessWidget {
                       itemCount: validatedRecord.length,
                       itemBuilder: (context, index) {
                         ValidatedRecord? record = validatedRecord[index];
-
                         return SizedBox(
                           height: 50,
                           child: Row(
@@ -96,7 +95,7 @@ class ValidatedRecordWidget extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      index.toString(),
+                                      {index + 1}.toString(),
                                       style: GoogleFontSer().arimo(
                                         const TextStyle(
                                           color: Colors.white70,
@@ -155,7 +154,7 @@ class ValidatedRecordWidget extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    record.date(),
+                                    record.date(dateTime: record.validatedAt),
                                     style: GoogleFontSer().arimo(
                                       const TextStyle(
                                         color: Colors.white70,

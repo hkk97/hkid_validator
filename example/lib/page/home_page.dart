@@ -147,7 +147,6 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
   FutureOr<void> afterFirstLayout(context) async {
     final sysNotifi = AppSer().indexedDBSer().sysDBSer().sysNotifi();
     await goSection(context, sysNotifi.value!.sec ?? Section.generate);
-
     _animatedStatus.addListener(() async {
       _lastOffsetNotifi.value = _scrolContrl.offset;
       if (_isForward == true) {

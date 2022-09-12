@@ -46,11 +46,11 @@ class IndexedDBSer {
     _sysDBSer = SysDBSer();
     _generatedDBSer = GeneratedDBSer();
     _validatedDBSer = ValidatedDBSer();
-    await _initDBClient(dbSerClient: _sysDBSer, name: 'SysDB', version: 1);
+    await _initDBClient(dbSerClient: _sysDBSer, name: 'SysDB', version: 2);
     await _initDBClient(
-        dbSerClient: _generatedDBSer, name: 'GeneratedDB', version: 1);
+        dbSerClient: _generatedDBSer, name: 'GeneratedDB', version: 2);
     await _initDBClient(
-        dbSerClient: _validatedDBSer, name: 'validatedDB', version: 1);
+        dbSerClient: _validatedDBSer, name: 'ValidatedDB', version: 2);
   }
 
   Future<void> dispose() async {

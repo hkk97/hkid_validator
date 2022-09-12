@@ -7,7 +7,7 @@ class GeneratedDBSer extends DBSerClient {
   late ValueNotifier<List<GeneratedRecord?>?> _genIDNotifi;
 
   GeneratedDBSer({super.dbSer}) {
-    _genIDNotifi = ValueNotifier(null);
+    _genIDNotifi = ValueNotifier([]);
   }
 
   ValueNotifier<List<GeneratedRecord?>?> genIDNotifi() => _genIDNotifi;

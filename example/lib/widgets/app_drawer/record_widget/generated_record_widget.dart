@@ -92,13 +92,15 @@ class GeneratedRecordWidget extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Text(index.toString(),
-                                          style: GoogleFontSer().arimo(
-                                            const TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 14.0,
-                                            ),
-                                          )),
+                                      Text(
+                                        {index + 1}.toString(),
+                                        style: GoogleFontSer().arimo(
+                                          const TextStyle(
+                                            color: Colors.white70,
+                                            fontSize: 14.0,
+                                          ),
+                                        ),
+                                      ),
                                       const SizedBox(
                                         width: 10.0,
                                       ),
@@ -125,7 +127,7 @@ class GeneratedRecordWidget extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.centerRight,
                                     child: Text(
-                                      record.date(),
+                                      record.date(dateTime: record.createdAt),
                                       style: GoogleFontSer().arimo(
                                         const TextStyle(
                                           color: Colors.white70,

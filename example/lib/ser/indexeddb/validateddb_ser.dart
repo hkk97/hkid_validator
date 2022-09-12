@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hkid_validator_web_demo/models/record/validated_record.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/db_ser.dart';
+import 'package:logger/logger.dart';
 import 'package:sembast/sembast.dart';
 
 class ValidatedDBSer extends DBSerClient {
   late ValueNotifier<List<ValidatedRecord?>?> _validatedIDNotifi;
 
   ValidatedDBSer({super.dbSer}) {
-    _validatedIDNotifi = ValueNotifier(null);
+    _validatedIDNotifi = ValueNotifier([]);
   }
 
   ValueNotifier<List<ValidatedRecord?>?> validatedIDNotifi() =>
       _validatedIDNotifi;
 
+  @override
   Future<void> init() async {
     List<ValidatedRecord?>? res = await read();
     if (res != null) {

@@ -1,5 +1,4 @@
 import 'package:hkid_validator_web_demo/models/record/hkid_record.dart';
-import 'package:intl/intl.dart';
 
 class GeneratedRecord extends HKID {
   final DateTime createdAt;
@@ -7,8 +6,6 @@ class GeneratedRecord extends HKID {
     required this.createdAt,
     required super.id,
   });
-
-  String date() => DateFormat("MMM dd H:mm").format(createdAt);
 
   factory GeneratedRecord.fromJson(
     Map<String, dynamic> json,
