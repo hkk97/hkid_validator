@@ -12,10 +12,12 @@ class RoundedBtn extends StatelessWidget {
   @override
   Widget build(context) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () => onTap(),
       child: Container(
         width: 20,
         height: 25,
+        margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: isSelected ? Colors.white : null,
           borderRadius: BorderRadius.circular(10),

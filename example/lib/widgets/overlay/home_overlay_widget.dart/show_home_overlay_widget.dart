@@ -19,7 +19,7 @@ Future<void> showHomeOverlayWidget({
               TextStyle(
                 color: Colors.grey.shade800,
                 fontSize: 24.0,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

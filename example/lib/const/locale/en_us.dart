@@ -14,5 +14,6 @@ const Map<String, String> enUS = {
   "hkidValidator": "HKID Validator",
   "noneOfRecords": "None of the records",
   "saveAsCSV": "Save as CSV Files",
-  'addToMainPage': 'Add [HKID Validator] to Main Page',
+  "addToMainPage": "Add to Main Page",
+  "menu": "Menu",
 };

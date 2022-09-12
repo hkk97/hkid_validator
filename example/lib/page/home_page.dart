@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/ser/app_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/app_drawer/app_drawer.dart';
 import 'package:hkid_validator_web_demo/widgets/common/bottom_indicator_btn.dart';
-import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/gen_hkid_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/overlay/home_overlay_widget.dart/show_home_overlay_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/validate_hkid_widget.dart';
@@ -125,15 +125,20 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
                 },
               ),
               Positioned(
-                left: 30,
-                top: 25,
+                left: 20,
+                top: 15,
                 child: InkWell(
                   onTap: () => _scaffoldKey.currentState!.openDrawer(),
-                  child: const EnvImgWidget(
-                    src: 'icons/menu_32x32.png',
-                    width: 25,
-                    height: 25,
-                    color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Tooltip(
+                      message: 'menu'.tr,
+                      child: const Icon(
+                        Icons.menu_rounded,
+                        size: 30.0,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -144,10 +149,14 @@ class _HomeStatus extends State<HomePage> with AfterLayoutMixin {
           valueListenable: _sectionNotifi,
           builder: (context, section, child) {
             return FloatingActionButton(
+              tooltip: "addToMainPage".tr,
               backgroundColor: section == Section.generate
                   ? const Color.fromRGBO(85, 184, 193, 1.0)
                   : const Color.fromRGBO(85, 193, 133, 1.0),
-              child: const Icon(Icons.add_home_outlined),
+              child: const Icon(
+                Icons.add_home_outlined,
+                size: 30,
+              ),
               onPressed: () async {
                 await showHomeOverlayWidget(context: context);
               },

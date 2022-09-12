@@ -128,25 +128,39 @@ class ValidatedRecordWidget extends StatelessWidget {
                                       width: 10.0,
                                     ),
                                     Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(10.0),
+                                        width: 18,
+                                        height: 18,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0),
+                                          ),
                                         ),
-                                      ),
-                                      child: EnvImgWidget(
-                                        padding: EdgeInsets.all(
-                                            record.isValid ? 3.0 : 6.0),
-                                        boxFit: BoxFit.fitHeight,
-                                        src:
-                                            "icons/${record.isValid ? 'check' : 'close'}_16x16.png",
-                                        color: record.isValid
-                                            ? Colors.green
-                                            : Colors.red,
-                                      ),
-                                    )
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: FittedBox(
+                                            fit: BoxFit.fitHeight,
+                                            child: Icon(
+                                              record.isValid
+                                                  ? Icons.check
+                                                  : Icons.close,
+                                              color: record.isValid
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                            ),
+                                          ),
+                                        )
+                                        //  EnvImgWidget(
+                                        //   padding: EdgeInsets.all(
+                                        //       record.isValid ? 3.0 : 6.0),
+                                        //   boxFit: BoxFit.fitHeight,
+                                        //   src:
+                                        //       "icons/${record.isValid ? 'check' : 'close'}_16x16.png",
+                                        //   color: record.isValid
+                                        //       ? Colors.green
+                                        //       : Colors.red,
+                                        // ),
+                                        )
                                   ],
                                 ),
                               ),
