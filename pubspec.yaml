@@ -1,6 +1,7 @@
 name: hkid_validator
 description: A HKID Validator and Generator, written by pure dart and foundamental library. Through this library you would esaily validate your HKID esaily. This library support all the platform of flutter and dart.
-version: 0.0.1
+repository: https://github.com/wchklaus/hkid_validator/tree/main
+version: 0.0.2
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

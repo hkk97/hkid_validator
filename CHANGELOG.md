@@ -4,4 +4,4 @@
 
 ## 0.0.2
 
-* Initial Open Source release.
+* Update the related info of the plugin
