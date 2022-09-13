@@ -13,4 +13,8 @@
 ## 0.0.4
 
 * Remove unnecessary info from README.md
+
+## 0.0.5
+
+* Update README.md
   

@@ -1,7 +1,7 @@
 # HKID Validator - Flutter Web Demo
 [![DockerCI](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml)
 [![ForkCI](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml)
-[![GitHubPageCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml)
+[![GitHubPageCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml)
 [![GithubPacakgesCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml)
 [![pages-build-deployment](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment)
 

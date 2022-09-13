@@ -56,11 +56,6 @@ String hkid = HKIDValidator().genValidHKID(isEight: false);```
 String hkid = hkid.withPARES();
 ```
 
-### Testing
-Please reference from the test folder, there are two test.
-- [Generate Random Validate HKID Test](https://github.com/wchklaus/hkid_validator/tree/main/test/gen_random_validate_hkid_test.dart)
-- [HKID Validator Test](https://github.com/wchklaus/hkid_validator/tree/main/test/hkid_validator_test.dart)
-
-# [HKID Validator Demo](example)
+# [HKID Validator Demo](https://github.com/wchklaus/hkid_validator/tree/master/example/)
 The UI of HKID Validator Web App, was inspired by [icelam](https://github.com/icelam/hkid-generator).
 A Flutter Web Demo for HKID Validator, this web demo is used to demonstrate the powerful of Flutter in Web Development and the usage of the packages called hkid_validator.
