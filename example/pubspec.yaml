@@ -32,6 +32,7 @@ dependencies:
   syncfusion_flutter_xlsio: ^20.2.48-beta
   google_fonts: ^3.0.1
   logger: ^1.1.0
+  routemaster: ^1.0.1
 
   flutter_web_plugins:
     sdk: flutter
@@ -46,3 +47,5 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/icons/
+    - assets/demo/

@@ -16,4 +16,8 @@ const Map<String, String> enUS = {
   "saveAsCSV": "Save as CSV Files",
   "addToMainPage": "Add to Home Screen",
   "menu": "Menu",
+  "later": "Later",
+  "understand": "Understand",
+  "understandHowAdd": "Understand how to add",
+  "addToMainScreenEsailyUse": "to the main screen for esaily use.",
 };
