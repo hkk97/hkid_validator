@@ -14,11 +14,10 @@ Future<void> showHomeOverlayWidget({
           backgroundColor: Colors.white,
           centerTitle: true,
           title: Text(
-            'addToMainPage'.tr,
+            "addToMainPage".tr,
             style: GoogleFontSer().arimo(
               TextStyle(
                 color: Colors.grey.shade800,
-                fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),

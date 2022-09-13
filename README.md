@@ -61,33 +61,6 @@ Please reference from the test folder, there are two test.
 - [Generate Random Validate HKID Test](test/gen_random_validate_hkid_test.dart)
 - [HKID Validator Test](test/hkid_validator_test.dart)
 
-
-### Build Flutter App Cotnainer Image
-```bash
-$ sudo docker build -t {container_name}/{image_name}:{tag} .
-```
-$ sudo docker build -t klaus97hk/hkid_validator:v1 .
-
-#### Build Container Image without using previous cache
-```
-$ sudo docker build --no-cache -t {container_name}/{image_name}:{tag} .
-```
-$ sudo docker build --no-cache -t klaus97hk/hkid_validator:v1 .
-
-### Show Docker Image
-$ sudo docker image ls
-
-### Run Container Image
-$ sudo docker run –name hkid_validator -d -p 8080:80 klaus97hk/hkid_validator:v1
-
-### Show all Docker containers, which are running
-$ docker ps -a
-
-or
-
-$ docker ps --all
-
-
 # [HKID Validator Demo](example)
 The UI of HKID Validator Web App, was inspired by [icelam](https://github.com/icelam/hkid-generator).
 A Flutter Web Demo for HKID Validator, this web demo is used to demonstrate the powerful of Flutter in Web Development and the usage of the packages called hkid_validator.
