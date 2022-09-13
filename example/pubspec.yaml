@@ -1,9 +1,7 @@
 name: hkid_validator_web_demo
 description: HKID Validator used to validate the HKID and generate the validate HKID through the hkid_validator packages. This is a Single Page Application (SPA) which used Flutter to develop.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
 version: 1.0.0+1
 

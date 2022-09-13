@@ -11,7 +11,7 @@ import 'package:hkid_validator_web_demo/ser/app_ser.dart';
 class LocaleSer extends Translations {
   // Default locale
   static Locale _locale = const Locale('en', 'US');
-  ValueNotifier<AppLocale> _appLocaleNotifi = ValueNotifier(AppLocale.en());
+  late ValueNotifier<AppLocale> _appLocaleNotifi;
 
   Locale locale() => _locale;
   ValueNotifier<AppLocale> appLocaleNotifi() => _appLocaleNotifi;
@@ -51,6 +51,7 @@ class LocaleSer extends Translations {
       };
 
   void init({required String? refLocaleName}) {
+    _appLocaleNotifi = ValueNotifier(AppLocale.en());
     if (refLocaleName != null && nameToLocale.containsKey(refLocaleName)) {
       _locale = nameToLocale[refLocaleName]!;
       _appLocaleNotifi.value = AppLocale.appLocale(refLocaleName);

@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';

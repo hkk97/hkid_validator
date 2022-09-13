@@ -5,8 +5,8 @@ import 'package:hkid_validator_web_demo/models/record/validated_record.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
-import 'package:hkid_validator_web_demo/widgets/common/env_img_widget.dart';
 import 'package:syncfusion_flutter_xlsio/xlsio.dart' as xls;
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 
 class ValidatedRecordWidget extends StatelessWidget {

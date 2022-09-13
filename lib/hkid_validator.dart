@@ -2,7 +2,6 @@ library hkid_validator;
 
 import 'dart:math';
 import 'const/alphabat_to_num.dart';
-import 'const/last_char_to_num.dart';
 
 extension HKIDWithParentheses on String {
   // Add Parentheses at the last character

@@ -58,7 +58,7 @@ class SysDBSer extends DBSerClient {
   }
 
   Future<RecordSnapshot<int, Map<String, Object?>>?> _readSnapshot() async {
-    late var res;
+    late RecordSnapshot<int, Map<String, Object?>>? res;
     int? key = await dbSer!.dbstore.findKey(dbSer!.db);
     res = key == null
         ? null

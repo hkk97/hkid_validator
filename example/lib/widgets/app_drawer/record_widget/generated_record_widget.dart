@@ -1,4 +1,5 @@
 import 'dart:convert';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,6 @@ import 'package:hkid_validator_web_demo/models/record/generated_record.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 import 'package:hkid_validator_web_demo/widgets/common/copied_text_widget.dart';
-import 'package:sembast/sembast.dart';
 import 'package:syncfusion_flutter_xlsio/xlsio.dart' as xls;
 
 class GeneratedRecordWidget extends StatelessWidget {

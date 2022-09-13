@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hkid_validator_web_demo/models/record/validated_record.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/db_ser.dart';
-import 'package:logger/logger.dart';
 import 'package:sembast/sembast.dart';
 
 class ValidatedDBSer extends DBSerClient {

@@ -4,7 +4,7 @@ import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/const/themes.dart';
 
 class ThemeController extends GetxController {
-  RxObjectMixin<ThemeData> _theme = Themes.generatedTheme.obs;
+  late RxObjectMixin<ThemeData> _theme;
 
   RxObjectMixin<ThemeData> theme() => _theme;
 
@@ -23,6 +23,7 @@ class ThemeController extends GetxController {
 
   @override
   Future onInit({Section? section}) async {
+    _theme = Themes.generatedTheme.obs;
     ThemeData themeData = section == null
         ? Themes.generatedTheme
         : section == Section.validate
