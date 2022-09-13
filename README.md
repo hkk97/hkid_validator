@@ -1,8 +1,8 @@
 # HKID Validator Library
 [![DockerCI](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml)
 [![ForkCI](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml)
-[![GitHubPageCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-ci.yml)
 [![GitHubPageCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml)
+[![GithubPacakgesCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml)
 [![pages-build-deployment](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment)
 
 HKID Validator Library, support HKID Validation and generated eight or nine digits validated HKID.
@@ -58,8 +58,8 @@ String hkid = hkid.withPARES();
 
 ### Testing
 Please reference from the test folder, there are two test.
-- [Generate Random Validate HKID Test](https://github.com/wchklaus/hkid_validator/test/gen_random_validate_hkid_test.dart)
-- [HKID Validator Test](https://github.com/wchklaus/hkid_validator/test/hkid_validator_test.dart)
+- [Generate Random Validate HKID Test](https://github.com/wchklaus/hkid_validator/tree/main/test/gen_random_validate_hkid_test.dart)
+- [HKID Validator Test](https://github.com/wchklaus/hkid_validator/tree/main/test/hkid_validator_test.dart)
 
 # [HKID Validator Demo](example)
 The UI of HKID Validator Web App, was inspired by [icelam](https://github.com/icelam/hkid-generator).
@@ -73,6 +73,6 @@ A Flutter Web Demo for HKID Validator, this web demo is used to demonstrate the 
 
 # Validator & Generator Test Demo
 ### HKID Validator Test
-![](https://github.com/wchklaus/hkid_validator/demo/hkid_validator_test.gif)
+![](https://github.com/wchklaus/hkid_validator/tree/main/demo/hkid_validator_test.gif)
 ### Genearte HKID Validate Test
-![](https://github.com/wchklaus/hkid_validator/demo/gen_random_validate_hkid_test.gif)
+![](https://github.com/wchklaus/hkid_validator/tree/main/demo/gen_random_validate_hkid_test.gif)
