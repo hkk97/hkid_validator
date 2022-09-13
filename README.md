@@ -64,15 +64,3 @@ Please reference from the test folder, there are two test.
 # [HKID Validator Demo](example)
 The UI of HKID Validator Web App, was inspired by [icelam](https://github.com/icelam/hkid-generator).
 A Flutter Web Demo for HKID Validator, this web demo is used to demonstrate the powerful of Flutter in Web Development and the usage of the packages called hkid_validator.
-| | |
-|:-------------------------:|:-------------------------:|
-|<img width="1604" src="example/demo/generated_section.png"> | 
-|<img width="1604" src="example/demo/generated_drawer.png"> | 
-|<img width="1604" src="example/demo/validated_section.png"> | 
-|<img width="1604" src="example/demo/validated_drawer.png"> | 
-
-# Validator & Generator Test Demo
-### HKID Validator Test
-![](https://github.com/wchklaus/hkid_validator/tree/main/demo/hkid_validator_test.gif)
-### Genearte HKID Validate Test
-![](https://github.com/wchklaus/hkid_validator/tree/main/demo/gen_random_validate_hkid_test.gif)
