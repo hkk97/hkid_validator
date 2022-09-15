@@ -28,7 +28,7 @@ jobs:
       - name: Flutter build Web
         run: |
           cd example
-          flutter build web --web-renderer html --no-sound-null-safety --dart-define=ENV=PROD -dart-define=FLUTTER_WEB_USE_SKIA=true
+          flutter build web --web-renderer html --no-sound-null-safety --dart-define=ENV=PROD -dart-define=FLUTTER_WEB_USE_SKIA=true --release
       - name: Deploy to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
