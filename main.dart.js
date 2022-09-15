@@ -20719,9 +20719,10 @@ a3M:function a3M(){},
 hC:function hC(a,b,c){this.b=a
 this.c=b
 this.a=c},
-lJ(a){return new A.lI(a)},
+lJ(a,b){return new A.lI(a,b)},
 atB(a,b,c,d){return new A.mo(d,b,a,c)},
-lI:function lI(a){this.a=a},
+lI:function lI(a,b){this.a=a
+this.b=b},
 mo:function mo(a,b,c,d){var _=this
 _.a=a
 _.b=b
@@ -73658,23 +73659,24 @@ L(a){var s=this.a.c,r=this.e
 r===$&&A.b()
 return new A.bM(r,new A.an8(this,s+1),null,null,t.D0)}}
 A.an8.prototype={
-$3(a,b,c){var s,r,q,p,o,n=null,m=b?a.U(t.w).f.a.a:550,l=b?a.U(t.w).f.a.b:550,k=A.e9(15),j=this.a,i=j.d
-i===$&&A.b()
-i=A.co(A.hM(i,new A.an4(j),A.wB(B.he,n,"icons/"+j.a.d.b+"_512x512.png",n)),n,n)
+$3(a,b,c){var s,r,q,p,o,n,m=null,l=b?a.U(t.w).f.a.a:550,k=b?a.U(t.w).f.a.b:550,j=A.e9(15),i=this.a,h=i.d
+h===$&&A.b()
+h=A.co(A.hM(h,new A.an4(i),A.wB(B.he,m,"icons/"+i.a.d.b+"_512x512.png",m)),m,m)
 s=A.cg("maximized")
-r=j.e
+r=i.e
 r===$&&A.b()
 q=t.p
-s=A.co(A.f2(A.a([i,A.ahq(A.asR(n,A.a4i(r.a?B.S1:B.S2,B.f0,35),n,new A.an5(j),B.aO,n),s)],q),B.a6,B.IA,B.Y),50,n)
-i=j.a
-i=A.cg(i.d.d[i.c].a)
+s=A.co(A.f2(A.a([h,A.ahq(A.asR(m,A.a4i(r.a?B.S1:B.S2,B.f0,35),m,new A.an5(i),B.aO,m),s)],q),B.a6,B.IA,B.Y),50,m)
+h=i.a
+h=A.cg(h.d.d[h.c].a)
 $.ds().toString
-i=A.bL(i,n,n,n,A.bR(B.tM),B.d6,n)
+h=A.bL(h,m,m,m,A.bR(B.tM),B.d6,m)
 p=A.e9(15)
-o=this.b
-o=A.ex(A.eT(A.a([s,B.Ms,i,A.ex(new A.bz(B.Qp,A.iO(new A.bz(B.vt,A.asm(B.nN,A.wB(B.uq,n,"demo/"+j.a.d.b+"/step_"+B.d.i(o)+".png",n)),n),B.R,new A.bY(p,B.D)),n)),new A.bz(B.QC,A.bL(""+o+"/"+B.d.i(j.a.d.d.length),n,n,n,A.bR(B.a0k),n,n),n)],q),B.a6,B.ad,B.Y))
+o=i.a
+n=o.d.d
+n=A.ex(A.eT(A.a([s,B.Ms,h,A.ex(new A.bz(B.Qp,A.iO(new A.bz(B.vt,A.asm(B.nN,A.wB(B.uq,m,n[o.c].b,m)),m),B.R,new A.bY(p,B.D)),m)),new A.bz(B.QC,A.bL(""+this.b+"/"+B.d.i(n.length),m,m,m,A.bR(B.a0k),m,m),m)],q),B.a6,B.ad,B.Y))
 p=a.U(t.w).f
-return A.co(A.iO(new A.bz(B.Qv,A.eT(A.a([o,A.co(A.f2(A.a([A.dx(n,new A.bz(B.f6,A.bL(A.cg(j.a.f),n,n,n,B.MN,n,n),n),B.a1,!1,n,n,n,n,n,n,n,n,n,n,new A.an6(j),n,n,n,n,n,n),A.co(A.ay3(B.f0,55,A.bL(A.cg(j.a.w),n,n,n,B.MM,n,n),new A.an7(j)),n,150)],q),B.a6,B.IB,B.Y),55,p.a.a)],q),B.a6,B.ad,B.Y),n),n,new A.bY(k,B.D)),l,m)},
+return A.co(A.iO(new A.bz(B.Qv,A.eT(A.a([n,A.co(A.f2(A.a([A.dx(m,new A.bz(B.f6,A.bL(A.cg(i.a.f),m,m,m,B.MN,m,m),m),B.a1,!1,m,m,m,m,m,m,m,m,m,m,new A.an6(i),m,m,m,m,m,m),A.co(A.ay3(B.f0,55,A.bL(A.cg(i.a.w),m,m,m,B.MM,m,m),new A.an7(i)),m,150)],q),B.a6,B.IB,B.Y),55,p.a.a)],q),B.a6,B.ad,B.Y),m),m,new A.bY(j,B.D)),k,l)},
 $S:430}
 A.an4.prototype={
 $2(a,b){var s=this.a.d
@@ -87207,9 +87209,9 @@ s($,"aOL","arI",()=>A.asa("en","EN"))
 s($,"aOM","avd",()=>A.asa("hk","\u7e41"))
 s($,"aOK","avc",()=>A.asa("ch","\u7b80"))
 s($,"aON","aBF",()=>A.a([$.arI(),$.avd(),$.avc()],A.aa("p<jU>")))
-s($,"aQD","aCm",()=>A.atB(B.f0,"android",A.a([A.lJ("aosAppInstall1Step1"),A.lJ("aosAppInstall1Step2"),A.lJ("aosAppInstall1Step3")],A.aa("p<lI>")),"Android"))
-s($,"aQF","aCo",()=>A.atB(B.P9,"ios",A.a([A.lJ("iosAppInstallStep1"),A.lJ("iosAppInstallStep2"),A.lJ("iosAppInstallStep3"),A.lJ("iosAppInstallStep4")],A.aa("p<lI>")),"iOS"))
-s($,"aQE","aCn",()=>A.atB(B.Ps,"chrome",A.a([A.lJ("chromAppInstallStep1"),A.lJ("chromAppInstallStep2")],A.aa("p<lI>")),"Chrome"))
+s($,"aQD","aCm",()=>A.atB(B.f0,"android",A.a([A.lJ("aosAppInstall1Step1","demo/android/step_1.png"),A.lJ("aosAppInstall1Step2","demo/android/step_2.png"),A.lJ("aosAppInstall1Step3","demo/android/step_3.png")],A.aa("p<lI>")),"Android"))
+s($,"aQF","aCo",()=>A.atB(B.P9,"ios",A.a([A.lJ("iosAppInstallStep1","demo/ios/step_1.png"),A.lJ("iosAppInstallStep2","demo/ios/step_2.png"),A.lJ("iosAppInstallStep3","demo/ios/step_3.png"),A.lJ("iosAppInstallStep4","demo/ios/step_4.png")],A.aa("p<lI>")),"iOS"))
+s($,"aQE","aCn",()=>A.atB(B.Ps,"chrome",A.a([A.lJ("chromAppInstallStep1","demo/chrome/step_1.png"),A.lJ("chromAppInstallStep2","demo/chrome/step_2.png")],A.aa("p<lI>")),"Chrome"))
 s($,"aQG","XT",()=>A.a([$.aCm(),$.aCo(),$.aCn()],A.aa("p<mo>")))
 s($,"aOO","pP",()=>new A.Yr())
 s($,"aPy","aBW",()=>new A.a29())
