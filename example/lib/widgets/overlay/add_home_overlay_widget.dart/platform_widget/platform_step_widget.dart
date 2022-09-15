@@ -144,9 +144,10 @@ class _PlatformStepState extends State<PlatformStepWidget>
                                         Radius.circular(5.0)),
                                     child: EnvImgWidget(
                                       boxFit: BoxFit.fitWidth,
-                                      src: widget.platform.installStepSrc(
-                                        index: currIndex,
-                                      ),
+                                      src: widget
+                                          .platform
+                                          .installSteps[widget.index]
+                                          .installStepSrc,
                                     ),
                                   ),
                                 ),
