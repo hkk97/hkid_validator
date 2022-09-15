@@ -61,7 +61,7 @@ class _PlatformDisplayState extends State<PlatformDisplayWidget> {
                               ),
                             ),
                           ),
-                          const TextSpan(text: "\t"),
+                          const TextSpan(text: " "),
                           TextSpan(
                             text: "hkidValidator".tr,
                             style: GoogleFontSer().arimo(
@@ -72,7 +72,7 @@ class _PlatformDisplayState extends State<PlatformDisplayWidget> {
                               ),
                             ),
                           ),
-                          const TextSpan(text: "\t"),
+                          const TextSpan(text: " "),
                           TextSpan(
                             text: "addToMainScreenEsailyUse".tr,
                             style: GoogleFontSer().arimo(
