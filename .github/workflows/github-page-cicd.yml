@@ -31,7 +31,7 @@ jobs:
           flutter build web --web-renderer html --no-sound-null-safety --dart-define=ENV=PROD -dart-define=FLUTTER_WEB_USE_SKIA=true
           echo "HelloWorld"
           echo "$PWD"
-          cp -R example/assets/demo example/build/web/assets/demo
+          mv -vi /home/runner/work/hkid_validator/hkid_validator/example/assets/demo /home/runner/work/hkid_validator/hkid_validator/example/build/web/assets/demo
       - name: Deploy to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
