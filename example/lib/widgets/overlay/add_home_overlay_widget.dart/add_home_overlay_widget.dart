@@ -3,11 +3,9 @@ import 'package:get/get.dart';
 import 'package:hkid_validator_web_demo/const/const.dart';
 import 'package:hkid_validator_web_demo/models/support_platform/support_platform.dart';
 import 'package:hkid_validator_web_demo/ser/google_font_ser.dart';
-import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/android_overlay_widget/show_android_overlay_widget.dart';
-import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/chrome_overlay_widget/show_chrome_overlay_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/hover_platform_widget/mobile_hover_platform_widget.dart';
 import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/hover_platform_widget/web_hover_platform_widget.dart';
-import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/ios_overlay_widget/show_ios_overlay_widget.dart';
+import 'package:hkid_validator_web_demo/widgets/overlay/add_home_overlay_widget.dart/show_platform_overlay_widget.dart';
 
 class AddHomeOverlayWidget extends StatefulWidget {
   final Function close;
@@ -35,20 +33,8 @@ class _AddHomeOverlayState extends State<AddHomeOverlayWidget> {
     super.dispose();
   }
 
-  Future<void> showPlatformOverlay({required String name}) async {
-    switch (nameToHomeScreenPlatform[name]) {
-      case HomeScreenPlatform.android:
-        await showAndroidOverlayWidget(context: context);
-        break;
-      case HomeScreenPlatform.ios:
-        await showIOSOverlayWidget(context: context);
-        break;
-      case HomeScreenPlatform.chrome:
-        await showChromeOverlayWidget(context: context);
-        break;
-      default:
-    }
-  }
+  Future<void> showPlatformOverlay({required SupportPlatform platform}) async =>
+      await showPlatformWidget(context: context, platform: platform);
 
   @override
   Widget build(context) {
@@ -103,7 +89,8 @@ class _AddHomeOverlayState extends State<AddHomeOverlayWidget> {
                               child: MobileHoverPlatformWidget(
                                 platform: platform,
                                 onTap: () async => await showPlatformOverlay(
-                                    name: platform.name),
+                                  platform: platform,
+                                ),
                               ),
                             ),
                             SupportPlatform.values.indexOf(platform) !=
@@ -132,7 +119,8 @@ class _AddHomeOverlayState extends State<AddHomeOverlayWidget> {
                             child: WebHoverPlatformWidget(
                               platform: platform,
                               onTap: () async => await showPlatformOverlay(
-                                  name: platform.name),
+                                platform: platform,
+                              ),
                             ),
                           ),
                           SupportPlatform.values.indexOf(platform) !=

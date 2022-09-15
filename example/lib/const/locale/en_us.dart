@@ -20,4 +20,26 @@ const Map<String, String> enUS = {
   "understand": "Understand",
   "understandHowAdd": "Understand how to add",
   "addToMainScreenEsailyUse": "to the main screen for esaily use.",
+  "back": "Back",
+  "next": "Next",
+  "maximized": "Maximized",
+  "minimized": "Minimized",
+  "go": "Go",
+  "chromeClickInstall": "click the install icon from the functional bar.",
+  "aosAppInstall1Step1":
+      "Go wchklaus.github.io/hkid_validator/ and it will pop up the Widget which ask you whether add to the Home Screen.",
+  "aosAppInstall1Step2": "Select install app from the pop up dialog.",
+  "aosAppInstall1Step3":
+      "Finally, the progressive web app will be installed in the Home Screen.",
+  "iosAppInstallStep1":
+      "Go wchklaus.github.io/hkid_validator/ and it will pop up the Widget which ask you whether add to the Home Screen.",
+  "iosAppInstallStep2":
+      "Select the Add to Home Screen, and it will pop up the bottom sheet.",
+  "iosAppInstallStep3": "Edit the name of the progressive web app.",
+  "iosAppInstallStep4":
+      "Finally, the progressive web app will be installed in the Home Screen.",
+  "chromAppInstallStep1":
+      "Go wchklaus.github.io/hkid_validator/ click the install icon from the functional bar.",
+  "chromAppInstallStep2":
+      "After install the app, it will auto activate it and show it on the bottom app bar.",
 };
