@@ -8,7 +8,7 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
 "canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
 "main.dart.js": "d95b3a9322d3270fb03cbc04b4e445b2",
-"assets/AssetManifest.json": "2efbb41d7877d10aac9d091f58ccd7b9",
+"assets/AssetManifest.json": "bcad231a159ea382092f783eb2d05965",
 "assets/apple-touch-icon-76x76-precomposed.png": "edcd075e9e9ab81165e437d19ba8373f",
 "assets/apple-touch-icon-72x72.png": "c05eacedf7935728cd9ad21230024d63",
 "assets/favicon-16x16.png": "18d59c1773c7cc25b03f87ca96ddf445",
@@ -16,6 +16,11 @@ const RESOURCES = {
 "assets/apple-touch-icon-180x180.png": "7eaa331ef1d02983f99f6350f727d923",
 "assets/apple-touch-icon-precomposed.png": "532a41e73aecfe8836e71c2db8bb7b5a",
 "assets/favicon.ico": "4a71e949ab0117b847950cf3e200af00",
+"assets/assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
+"assets/assets/FontManifest.json": "f66aa55cd79651f341aedd8491362eea",
+"assets/assets/icons/chrome_512x512.png": "657cef546129e8a3dce4eaff547ec272",
+"assets/assets/icons/android_512x512.png": "1a751010e6e2cd2ca6610421ee06ba19",
+"assets/assets/icons/ios_512x512.png": "2c942a27a5180caf2ec0ca1675080fc7",
 "assets/apple-touch-icon-72x72-precomposed.png": "147517598c1f7a1bc2e763023a6b76f9",
 "assets/mstile-150x150.png": "3a764ccf97f9af44f02ec57e203116ee",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
@@ -54,8 +59,8 @@ const RESOURCES = {
 "assets/apple-touch-icon-60x60-precomposed.png": "bc5ad2f49eb3dad6392425125dcdd555",
 "assets/apple-touch-icon-144x144-precomposed.png": "3199c713fbd8bd3dc3c339a50ccb4629",
 "flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
-"index.html": "e07dfc5a8839260fcf97e76728d0f352",
-"/": "e07dfc5a8839260fcf97e76728d0f352",
+"index.html": "86092e162e18a842eb4ae2d63ed0c16a",
+"/": "86092e162e18a842eb4ae2d63ed0c16a",
 "version.json": "a74ce0bee35cc93dee71211e4d8908f1"
 };
 
