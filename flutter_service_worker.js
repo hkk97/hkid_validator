@@ -59,8 +59,8 @@ const RESOURCES = {
 "assets/apple-touch-icon-60x60-precomposed.png": "bc5ad2f49eb3dad6392425125dcdd555",
 "assets/apple-touch-icon-144x144-precomposed.png": "3199c713fbd8bd3dc3c339a50ccb4629",
 "flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
-"index.html": "86092e162e18a842eb4ae2d63ed0c16a",
-"/": "86092e162e18a842eb4ae2d63ed0c16a",
+"index.html": "83f2c24d0166ddd5afa86fdf75c7691d",
+"/": "83f2c24d0166ddd5afa86fdf75c7691d",
 "version.json": "a74ce0bee35cc93dee71211e4d8908f1"
 };
 
