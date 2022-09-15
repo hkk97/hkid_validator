@@ -7,7 +7,7 @@ const RESOURCES = {
 "canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
 "canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
 "canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
-"main.dart.js": "a2d326f0f01a95d2ab1c2d8efa3b4a0c",
+"main.dart.js": "597352dfd27a405b467a06b7f6fa1d90",
 "assets/AssetManifest.json": "bcad231a159ea382092f783eb2d05965",
 "assets/apple-touch-icon-76x76-precomposed.png": "edcd075e9e9ab81165e437d19ba8373f",
 "assets/apple-touch-icon-72x72.png": "c05eacedf7935728cd9ad21230024d63",
@@ -56,8 +56,8 @@ const RESOURCES = {
 "assets/apple-touch-icon-60x60-precomposed.png": "bc5ad2f49eb3dad6392425125dcdd555",
 "assets/apple-touch-icon-144x144-precomposed.png": "3199c713fbd8bd3dc3c339a50ccb4629",
 "flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
-"index.html": "f914c06babe16005a13d74f36fb9b6f4",
-"/": "f914c06babe16005a13d74f36fb9b6f4",
+"index.html": "a1069a3150a5f837db5a98b598450760",
+"/": "a1069a3150a5f837db5a98b598450760",
 "version.json": "a74ce0bee35cc93dee71211e4d8908f1"
 };
 
