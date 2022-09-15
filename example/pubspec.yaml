@@ -31,9 +31,6 @@ dependencies:
   idb_shim: ">=2.0.1 <4.0.0"
   syncfusion_flutter_xlsio: ^20.2.48-beta
   google_fonts: ^3.0.1
-  logger: ^1.1.0
-  font_awesome_flutter: ^10.2.1
-  link_text: ^0.2.0
 
   flutter_web_plugins:
     sdk: flutter
