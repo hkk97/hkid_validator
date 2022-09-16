@@ -1,8 +1,8 @@
-name: DockerCI
+name: DockerCICD
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
@@ -24,4 +24,3 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
           repository: klaus97hk/hkid_validator
           tags: latest, ${{ github.run_number}}
-          

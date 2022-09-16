@@ -1,4 +1,4 @@
-name: ForkCI
+name: ForkCICD
 
 on:
   push:
