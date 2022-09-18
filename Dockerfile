@@ -2,7 +2,7 @@
 FROM nginx:stable-alpine as stage1
 
 # System software upgrade and install, then remove unnecessary layes to reduce docker image size
-RUN apt-get update &&  apt-get install -y unzip git && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt
+RUN apt-get update && apt-get install -y unzip git && apt-get upgrade -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt
 
 # Install Flutter
 RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter 
