@@ -1,9 +1,10 @@
 # HKID Validator Library
-[![DockerCI](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-ci.yml)
-[![ForkCI](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-ci.yml)
+[![DockerCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/docker-cicd.yml)
+[![ForkCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/fork-cicd.yml)
 [![GitHubPageCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-page-cicd.yml)
-[![GithubPacakgesCI](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-ci.yml)
+[![GithubPacakgesCICD](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-cicd.yml/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/github-packages-cicd.yml)
 [![pages-build-deployment](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/wchklaus/hkid_validator/actions/workflows/pages/pages-build-deployment)
+[![CodeFactor](https://www.codefactor.io/repository/github/wchklaus/hkid_validator/badge)](https://www.codefactor.io/repository/github/wchklaus/hkid_validator)
 
 HKID Validator Library, support HKID Validation and generated eight or nine digits validated HKID.
 
