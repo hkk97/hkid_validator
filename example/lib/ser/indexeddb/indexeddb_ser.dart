@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:hkid_validator_web_demo/ser/indexeddb/db_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/generateddb_ser.dart';
 import 'package:hkid_validator_web_demo/ser/indexeddb/sysdb_ser.dart';
@@ -10,7 +9,13 @@ import 'package:sembast_web/sembast_web.dart';
 class IndexedDBSer {
   static final IndexedDBSer _ser = IndexedDBSer._internal();
   factory IndexedDBSer() => _ser;
-  IndexedDBSer._internal();
+  IndexedDBSer._internal() {
+    _dbFactory = databaseFactoryWeb;
+    _dbStore = intMapStoreFactory.store("records");
+    _sysDBSer = SysDBSer();
+    _generatedDBSer = GeneratedDBSer();
+    _validatedDBSer = ValidatedDBSer();
+  }
 
   late DatabaseFactory _dbFactory;
   late SysDBSer _sysDBSer;
@@ -41,11 +46,6 @@ class IndexedDBSer {
   }
 
   Future<void> init() async {
-    _dbFactory = databaseFactoryWeb;
-    _dbStore = intMapStoreFactory.store("records");
-    _sysDBSer = SysDBSer();
-    _generatedDBSer = GeneratedDBSer();
-    _validatedDBSer = ValidatedDBSer();
     await _initDBClient(dbSerClient: _sysDBSer, name: 'SysDB', version: 2);
     await _initDBClient(
         dbSerClient: _generatedDBSer, name: 'GeneratedDB', version: 2);

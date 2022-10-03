@@ -7,7 +7,12 @@ import 'package:hkid_validator_web_demo/ser/indexeddb/indexeddb_ser.dart';
 class AppSer {
   static final AppSer _ser = AppSer._internal();
   factory AppSer() => _ser;
-  AppSer._internal();
+  AppSer._internal() {
+    _indexedDBSer = IndexedDBSer();
+    _themeContrl = ThemeController();
+    _localeSer = LocaleSer();
+    _envSer = EnvSer();
+  }
 
   late LocaleSer _localeSer;
   late IndexedDBSer _indexedDBSer;
@@ -19,14 +24,11 @@ class AppSer {
   ThemeController themeContrl() => _themeContrl;
 
   Future<void> init({required String env}) async {
-    _indexedDBSer = IndexedDBSer();
     await _indexedDBSer.init();
     Sys? sys = await _indexedDBSer.sysDBSer().read();
-    _themeContrl = ThemeController();
     await _themeContrl.onInit(section: sys!.sec);
-    _localeSer = LocaleSer();
     _localeSer.init(refLocaleName: sys.localeName!);
-    _envSer = EnvSer()..initConfig(env);
+    _envSer.initConfig(env);
   }
 
   Future<void> dispose() async {

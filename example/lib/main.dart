@@ -7,7 +7,6 @@ import 'package:hkid_validator_web_demo/ser/env_ser.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setUrlStrategy(PathUrlStrategy());
-
   const String env = String.fromEnvironment(
     'ENV',
     defaultValue: EnvSer.prod,
