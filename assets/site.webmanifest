@@ -1,0 +1,62 @@
+{
+    "name": "HKID Validator",
+    "short_name": "HKID Validator",
+    "start_url": "https://hkk97.github.io/hkid_validator/",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "HKID Validator used to generate validate Hong Kong Identity Card number. This is Single Page Application (SPA) whuch used Flutter to develop, through this website you would generate validated HKID and validate the HKID.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "https://hkk97.github.io/hkid_validator/assets/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://hkk97.github.io/hkid_validator/assets/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "https://hkk97.github.io/hkid_validator/assets/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/ico"
+        },
+        {
+            "src": "https://hkk97.github.io/hkid_validator/assets/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "https://hkk97.github.io/hkid_validator/assets/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "HKID Validator",
+            "description": "HKID Validator used to generate validate Hong Kong Identity Card number. This is Single Page Application (SPA) whuch used Flutter to develop, through this website you would generate validated HKID and validate the HKID.",
+            "url": "https://hkk97.github.io/hkid_validator/",
+            "icons": [
+                {
+                    "src": "https://hkk97.github.io/hkid_validator/assets/favicon.ico",
+                    "sizes": "48x48",
+                    "type": "image/ico"
+                },
+                {
+                    "src": "https://hkk97.github.io/hkid_validator/assets/favicon-16x16.png",
+                    "sizes": "16x16",
+                    "type": "image/png"
+                },
+                {
+                    "src": "https://hkk97.github.io/hkid_validator/assets/favicon-32x32.png",
+                    "sizes": "32x32",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ]
+}

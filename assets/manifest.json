@@ -1,0 +1,10 @@
+{
+    "name": "Hong Kong Identify Card Validator and Generator",
+    "short_name": "Hong Kong Identify Card Validator and Generator",
+    "start_url": "https://hkk97.github.io/hkid_validator/",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "HKID Validator used to generate validate Hong Kong Identity Card number. This is Single Page Application (SPA) whuch used Flutter to develop, through this website you would generate validated HKID and validate the HKID.",
+    "orientation": "portrait-primary"
+}
