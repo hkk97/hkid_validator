@@ -1,6 +1,6 @@
 name: hkid_validator
 description: An HKID Validator and Generator, written by a pure dart. Through this library, you would easily validate your HKID quickly.
-repository: https://github.com/wchklaus/hkid_validator/tree/main
+repository: https://github.com/hkk97/hkid_validator/tree/main
 version: 0.0.5
 
 environment:

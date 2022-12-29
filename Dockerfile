@@ -22,8 +22,8 @@ RUN flutter build web --web-renderer html --no-sound-null-safety --dart-define=E
 # Stage 2
 FROM nginx:stable-alpine
 WORKDIR /usr/share/nginx
-COPY --from=stage1 /usr/local/bin/app/example/build/web /var/www/wchklaus.xyz/hkidvalidator
-COPY --from=stage1 /usr/local/bin/app/example/assets/demo /var/www/wchklaus.xyz/hkidvalidator/assets/assets/demo
+COPY --from=stage1 /usr/local/bin/app/example/build/web /var/www/hkk97.xyz/hkidvalidator
+COPY --from=stage1 /usr/local/bin/app/example/assets/demo /var/www/hkk97.xyz/hkidvalidator/assets/assets/demo
 
 COPY example/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY example/nginx/nginx.conf /etc/nginx/nginx.conf

@@ -27,13 +27,13 @@ const Map<String, String> chCH = {
   "go": "去",
   "chromeClickInstall": "单击功能栏中的安装图标。",
   "aosAppInstall1Step1":
-      "去 wchklaus.github.io/hkid_validator/ 它会弹出窗口小部件询问您是否添加到主屏幕。",
+      "去 hkk97.github.io/hkid_validator/ 它会弹出窗口小部件询问您是否添加到主屏幕。",
   "aosAppInstall1Step2": "从弹出的对话框中选择安装应用程序。",
   "aosAppInstall1Step3": "最后，渐进式网络应用程序将安装在主屏幕中。",
-  "iosAppInstallStep1": "去 wchklaus.github.io/hkid_validator/ 然后选择分享按钮。",
+  "iosAppInstallStep1": "去 hkk97.github.io/hkid_validator/ 然后选择分享按钮。",
   "iosAppInstallStep2": "选择添加到主屏幕，它将弹出底部工作表。",
   "iosAppInstallStep3": "编辑渐进式 Web 应用程序的名称。",
   "iosAppInstallStep4": "最后，渐进式网络应用程序将安装在主屏幕中。",
-  "chromAppInstallStep1": "去 wchklaus.github.io/hkid_validator/ 单击功能栏中的安装图标。",
+  "chromAppInstallStep1": "去 hkk97.github.io/hkid_validator/ 单击功能栏中的安装图标。",
   "chromAppInstallStep2": "安装应用程序后，它将自动激活并显示在底部应用程序栏上。",
 };
