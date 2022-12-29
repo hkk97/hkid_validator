@@ -1,7 +1,7 @@
 {
     "name": "Hong Kong Identify Card Validator and Generator",
     "short_name": "Hong Kong Identify Card Validator and Generator",
-    "start_url": "https://wchklaus.github.io/hkid_validator/",
+    "start_url": "https://hkk97.github.io/hkid_validator/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
